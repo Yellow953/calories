@@ -4,6 +4,12 @@
 
 @section('sub-title', 'edit')
 
+@section('actions')
+<a href="{{ url()->previous() }}" class="btn btn-sm fw-bold btn-secondary">
+    Back
+</a>
+@endsection
+
 @section('content')
 <div class="container mt-5">
     <div class="card">

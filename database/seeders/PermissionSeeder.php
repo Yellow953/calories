@@ -44,8 +44,8 @@ class PermissionSeeder extends Seeder
             'logs.read',
             'logs.export',
 
-            // Settings
-            'settings.all',
+            // Notifications
+            'notifications.read',
         ];
 
         foreach ($permissions as $permission) {

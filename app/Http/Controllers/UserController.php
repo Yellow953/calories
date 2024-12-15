@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('id', 'name', 'email')->filter()->orderBy('id', 'desc')->paginate(25);
+        $users = User::select('id', 'name', 'email', 'phone')->filter()->orderBy('id', 'desc')->paginate(25);
 
         return view('app.users.index', compact('users'));
     }
@@ -45,6 +45,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => trim($request->name),
             'email' => trim($request->email),
+            'phone' => trim($request->phone),
+            'address' => trim($request->address),
             'password' => Hash::make($request->password),
         ]);
 
@@ -79,6 +81,8 @@ class UserController extends Controller
         $user->update([
             'name' => trim($request->name),
             'email' => trim($request->email),
+            'phone' => trim($request->phone),
+            'address' => trim($request->address),
         ]);
 
         if ($request->has('permissions')) {

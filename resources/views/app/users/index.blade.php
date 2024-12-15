@@ -4,27 +4,12 @@
 
 @section('actions')
 
+@section('actions')
 @can('users.create')
 <a class="btn btn-sm fw-bold btn-primary" type="button" href="{{ route('users.new') }}">New User</a>
 @endcan
-
 @can('users.export')
-<div class="dropdown">
-    <button class="btn btn-sm fw-bold btn-primary dropdown-toggle" type="button" id="actionsDropdown"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Export
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="actionsDropdown">
-        <li>
-            <a class="dropdown-item" href="{{ route('users.export') }}">to Excel</a>
-        </li>
-        <li>
-            <a class="dropdown-item" href="{{ route('users.export_pdf') }}">
-                to PDF
-            </a>
-        </li>
-    </ul>
-</div>
+<a class="btn btn-sm fw-bold btn-primary" type="button" href="{{ route('users.export') }}">Export Users</a>
 @endcan
 @endsection
 
@@ -75,10 +60,26 @@
                 <!--begin::Row-->
                 <div class="row g-8 mb-8">
                     <!--begin::Col-->
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label class="fs-6 form-label fw-bold text-dark">Email</label>
                         <input type="email" class="form-control" name="email" value="{{ request()->query('email') }}"
                             placeholder="Enter Email..." />
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                        <label class="fs-6 form-label fw-bold text-dark">Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" value="{{ request()->query('phone') }}"
+                            placeholder="Enter Phone Number..." />
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
+                    <div class="col-md-12">
+                        <label class="fs-6 form-label fw-bold text-dark">Address</label>
+                        <input type="text" class="form-control" name="address" value="{{ request()->query('address') }}"
+                            placeholder="Enter Address..." />
                     </div>
                     <!--end::Col-->
                 </div>
@@ -134,17 +135,18 @@
                             </td>
                             <td>
                                 <div class="text-center">
-                                    {{ $user->email }}
+                                    {{ $user->email }} <br>
+                                    {{ $user->phone }}
                                 </div>
                             </td>
                             <td class="d-flex justify-content-end border-0">
-                                @can('resellers.update')
+                                @can('users.update')
                                 <a href="{{ route('users.edit', $user->id) }}"
                                     class="btn btn-icon btn-warning btn-sm me-1">
                                     <i class="bi bi-pen-fill"></i>
                                 </a>
                                 @endcan
-                                @can('resellers.delete')
+                                @can('users.delete')
                                 <a href="{{ route('users.destroy', $user->id) }}"
                                     class="btn btn-icon btn-danger btn-sm show_confirm" data-toggle="tooltip"
                                     data-original-title="Delete User">
@@ -162,7 +164,6 @@
                         @endforelse
                     </tbody>
                     <!--end::Table body-->
-
                     <tfoot>
                         <tr>
                             <th colspan="3">

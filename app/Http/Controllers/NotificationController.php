@@ -6,25 +6,16 @@ use App\Models\Product;
 
 class NotificationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:notifications.read')->only('index');
+    }
+
     public function index()
     {
         $notifications = $this->get_notifications();
 
-        return view('notifications.index', compact('notifications'));
-    }
-
-    public function fetch()
-    {
-        $notifications = $this->get_notifications();
-
-        $notifications = collect($notifications)->map(function ($notification) {
-            return [
-                'message' => $notification,
-                'timestamp' => now()->diffForHumans(),
-            ];
-        });
-
-        return response()->json(['notifications' => $notifications]);
+        return view('app.notifications.index', compact('notifications'));
     }
 
     // Private

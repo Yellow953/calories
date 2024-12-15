@@ -23,12 +23,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::select('id', 'name', 'description', 'image')->with('products')->filter()->orderBy('id', 'desc')->paginate(25);
-        return view('categories.index', compact('categories'));
+        return view('app.categories.index', compact('categories'));
     }
 
     public function new()
     {
-        return view('categories.new');
+        return view('app.categories.new');
     }
 
     public function create(Request $request)
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = auth()->user()->id . '_' . time() . '.' . $ext;
+            $filename = time() . '.' . $ext;
             $image = Image::make($file);
             $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();
@@ -65,7 +65,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('categories.edit', compact('category'));
+        return view('app.categories.edit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
@@ -77,7 +77,7 @@ class CategoryController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
-            $filename = auth()->user()->id . '_' . time() . '.' . $ext;
+            $filename = time() . '.' . $ext;
             $image = Image::make($file);
             $image->fit(300, 300, function ($constraint) {
                 $constraint->upsize();

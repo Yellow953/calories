@@ -27,7 +27,8 @@ $user = auth()->user();
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="{{ route('app') }}" class="d-lg-none">
-                <img alt="Logo" src="{{ asset('assets/images/favicon.png') }}" class="h-30px" />
+                <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="h-30px" />
+                <span class="text-dark mx-2">Calories</span>
             </a>
         </div>
         <!--end::Mobile logo-->
@@ -237,14 +238,6 @@ $user = auth()->user();
                         {{-- <img src="{{ asset('assets/images/default_profile.png') }}" class="bg-white p-1"
                             alt="user" /> --}}
                         <div class="d-flex align-items-center px-3">
-                            <!--begin::Username-->
-                            <div class="d-flex flex-column me-5">
-                                <div class="fw-bold d-flex align-items-center fs-5">{{ ucwords($user->name) }}
-                                </div>
-                                <a href="#" class="fw-semibold text-muted fs-7">{{ $user->email
-                                    }}</a>
-                            </div>
-                            <!--end::Username-->
                             <!--begin::Avatar-->
                             <div class="symbol symbol-50px ">
                                 <img alt="Logo" src="{{ asset('assets/images/default_profile.png') }}"

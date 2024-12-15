@@ -26,12 +26,12 @@ class OrderController extends Controller
         $users = User::select('id', 'name')->where('business_id', auth()->user()->business_id)->get();
 
         $data = compact('orders', 'users');
-        return view('orders.index', $data);
+        return view('app.orders.index', $data);
     }
 
     public function show(Order $order)
     {
-        return view('orders.show', compact('order'));
+        return view('app.orders.show', compact('order'));
     }
 
     public function destroy(Order $order)

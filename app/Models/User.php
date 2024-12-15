@@ -54,6 +54,10 @@ class User extends Authenticatable
             $phone = request('phone');
             $q->where('phone', 'LIKE', "%{$phone}%");
         }
+        if (request('address')) {
+            $address = request('address');
+            $q->where('address', 'LIKE', "%{$address}%");
+        }
 
         return $q;
     }

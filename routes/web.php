@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Set Locale
+Route::get('set-locale/{locale}', [HomeController::class, 'setLocale'])->name('setLocale');
+
 // Auth
 Route::middleware(['auth'])->group(function () {
     // Logout

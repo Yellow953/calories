@@ -34,6 +34,20 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group mt-5">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter Phone Number..."
+                            value="{{ old('phone') }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address..."
+                            value="{{ old('address') }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
                         <label class="required form-label">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password..."
                             required />
@@ -79,7 +93,6 @@
         </div>
         <div class="card-footer pt-0">
             <div class="d-flex align-items-center justify-content-around">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 <button type="reset" class="btn btn-danger clear-btn">Clear</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

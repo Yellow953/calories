@@ -13,6 +13,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'admin',
                 'email' => 'test@test.com',
+                'phone' => '70239783',
+                'address' => 'test address',
                 'password' => bcrypt('qwe123'),
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -20,6 +22,8 @@ class UserSeeder extends Seeder
             [
                 'name' => 'user',
                 'email' => 'user@user.com',
+                'phone' => '70239783',
+                'address' => 'test address',
                 'password' => bcrypt('qwe123'),
                 'created_at' => now(),
                 'updated_at' => now(),

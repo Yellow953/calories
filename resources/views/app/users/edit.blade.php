@@ -18,18 +18,32 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group mt-5">
                         <label class="required form-label">Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Enter Name..."
                             value="{{ $user->name }}" required />
                     </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="form-group mt-5">
                         <label class="required form-label">Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Enter Email..."
                             value="{{ $user->email }}" required />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" placeholder="Enter Phone Number..."
+                            value="{{ $user->phone }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" name="address" placeholder="Enter Address..."
+                            value="{{ $user->address }}" />
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -65,7 +79,6 @@
         </div>
         <div class="card-footer pt-0">
             <div class="d-flex align-items-center justify-content-around">
-                <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 <button type="reset" class="btn btn-danger clear-btn">Clear</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>

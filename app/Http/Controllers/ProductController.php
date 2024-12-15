@@ -28,13 +28,13 @@ class ProductController extends Controller
         $categories = Category::select('id', 'name')->get();
 
         $data = compact('products', 'categories');
-        return view('products.index', $data);
+        return view('app.products.index', $data);
     }
 
     public function new()
     {
         $categories = Category::select('id', 'name')->get();
-        return view('products.new', compact('categories'));
+        return view('app.products.new', compact('categories'));
     }
 
     public function create(Request $request)
@@ -89,7 +89,7 @@ class ProductController extends Controller
         $categories = Category::select('id', 'name')->get();
         $data = compact('categories', 'product');
 
-        return view('products.edit', $data);
+        return view('app.products.edit', $data);
     }
 
     public function update(Request $request, Product $product)
@@ -163,7 +163,7 @@ class ProductController extends Controller
 
     public function import(Product $product)
     {
-        return view('products.import', compact('product'));
+        return view('app.products.import', compact('product'));
     }
 
     public function save(Product $product, Request $request)

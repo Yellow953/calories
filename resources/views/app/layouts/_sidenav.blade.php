@@ -6,8 +6,12 @@
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
         <a href="{{ route('app') }}">
-            <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="h-50px app-sidebar-logo-default" />
-            <img alt="Logo" src="{{ asset('assets/images/favicon.png') }}" class="h-40px app-sidebar-logo-minimize" />
+            <div class="d-flex align-items-center">
+                <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="h-50px app-sidebar-logo-default" />
+                <h2 class="app-sidebar-logo-default mx-2 my-auto text-white">Calories</h2>
+            </div>
+
+            <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="h-40px app-sidebar-logo-minimize" />
         </a>
         <!--end::Logo image-->
         <!--begin::Sidebar toggle-->
@@ -61,7 +65,7 @@
                     <a class="menu-link {{ request()->routeIs('categories*') ? 'active' : '' }}"
                         href="{{ route('categories') }}">
                         <span class="menu-icon">
-                            <i class="bi bi-gem"></i>
+                            <i class="bi bi-box2-fill"></i>
                         </span>
                         <span class="menu-title">Categories</span>
                     </a>
@@ -77,7 +81,7 @@
                     <a class="menu-link {{ request()->routeIs('products*') ? 'active' : '' }}"
                         href="{{ route('products') }}">
                         <span class="menu-icon">
-                            <i class="bi bi-gem"></i>
+                            <i class="bi bi-bag-fill"></i>
                         </span>
                         <span class="menu-title">Products</span>
                     </a>
@@ -93,7 +97,7 @@
                     <a class="menu-link {{ request()->routeIs('orders*') ? 'active' : '' }}"
                         href="{{ route('orders') }}">
                         <span class="menu-icon">
-                            <i class="bi bi-gem"></i>
+                            <i class="bi bi-clipboard-fill"></i>
                         </span>
                         <span class="menu-title">Orders</span>
                     </a>
@@ -124,7 +128,7 @@
                     <a class="menu-link {{ request()->routeIs('notifications*') ? 'active' : '' }}"
                         href="{{ route('notifications') }}">
                         <span class="menu-icon">
-                            <i class="bi bi-receipt"></i>
+                            <i class="bi bi-bell-fill"></i>
                         </span>
                         <span class="menu-title">Notifications</span>
                     </a>

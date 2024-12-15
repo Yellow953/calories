@@ -12,6 +12,15 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function setLocale($locale)
+    {
+        if (in_array($locale, ['en', 'ar'])) {
+            app()->setLocale($locale);
+            session(['locale' => $locale]);
+        }
+        return redirect()->back();
+    }
+
     public function custom_logout()
     {
         Session::flush();

@@ -7,9 +7,6 @@
 <a href="{{ route('logs.export') }}" class="btn btn-sm fw-bold btn-primary">
     Export to Excel
 </a>
-<a href="{{ route('logs.export_pdf') }}" class="btn btn-sm fw-bold btn-primary">
-    Export to PDF
-</a>
 @endcan
 @endsection
 
