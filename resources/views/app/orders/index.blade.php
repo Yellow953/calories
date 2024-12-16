@@ -3,9 +3,6 @@
 @section('title', 'orders')
 
 @section('actions')
-@can('orders.create')
-<a class="btn btn-sm fw-bold btn-primary" type="button" href="{{ route('orders.new') }}">New Order</a>
-@endcan
 @can('orders.export')
 <a class="btn btn-sm fw-bold btn-primary" type="button" href="{{ route('orders.export') }}">Export Orders</a>
 @endcan

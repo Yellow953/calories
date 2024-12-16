@@ -105,7 +105,7 @@
                         <tr class="text-center">
                             <th class="col-2 p-3">Product</th>
                             <th class="col-2 p-3">Description</th>
-                            <th class="col-2 p-3">Quantity</th>
+                            <th class="col-2 p-3">Stock</th>
                             <th class="col-2 p-3">Price</th>
                             <th class="col-2 p-3">Category</th>
                             <th class="col-2 p-3">Actions</th>
@@ -138,22 +138,16 @@
                             </td>
                             <td>
                                 <div class="text-center">
-                                    {{ $product->quantity }}
+                                    {{ $product->stock }}
                                 </div>
                             </td>
                             <td>
                                 <div class="text-center">
-                                    Price: <span class="text-success">{{ number_format($product->price *
-                                        $currency->rate, 2)
-                                        }} {{ $currency->symbol }}</span>
+                                    Price: <span class="text-success">{{ number_format($product->price, 2) }}</span>
                                     <br>
-                                    Cost: <span class="text-danger">{{ number_format($product->cost * $currency->rate,
-                                        2)
-                                        }} {{ $currency->symbol }}</span> <br>
-                                    Profit: <span class="text-primary">{{ number_format($product->get_profit() *
-                                        $currency->rate,
-                                        2)
-                                        }} {{ $currency->symbol }}</span>
+                                    Cost: <span class="text-danger">{{ number_format($product->cost, 2) }}</span> <br>
+                                    Profit: <span class="text-primary">{{ number_format($product->get_profit(), 2)
+                                        }}</span>
                                 </div>
                             </td>
                             <td class="text-center">

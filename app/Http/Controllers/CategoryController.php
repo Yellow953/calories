@@ -22,7 +22,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = Category::select('id', 'name', 'description', 'image')->with('products')->filter()->orderBy('id', 'desc')->paginate(25);
+        $categories = Category::select('id', 'name', 'description', 'image')->with('products')->filter()->orderBy('id', 'desc')->paginate(10);
         return view('app.categories.index', compact('categories'));
     }
 

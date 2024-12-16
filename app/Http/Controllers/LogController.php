@@ -16,7 +16,7 @@ class LogController extends Controller
 
     public function index()
     {
-        $logs = Log::select('text', 'created_at')->filter()->orderBy('created_at', 'desc')->paginate(25);
+        $logs = Log::select('text', 'created_at')->filter()->orderBy('created_at', 'desc')->paginate(10);
 
         return view('app.logs.index', compact('logs'));
     }

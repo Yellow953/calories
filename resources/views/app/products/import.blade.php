@@ -30,10 +30,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="required form-label">Quantity</label>
-                                    <input type="number" class="form-control" name="quantity"
-                                        placeholder="Enter Quantity..." value="{{ old('quantity') }}" required min="1"
-                                        step="any" />
+                                    <label class="required form-label">Stock</label>
+                                    <input type="number" class="form-control" name="stock" placeholder="Enter Stock..."
+                                        value="{{ old('stock') }}" required min="1" step="any" />
                                 </div>
                             </div>
                         </div>

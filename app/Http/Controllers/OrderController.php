@@ -22,8 +22,8 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::select('id', 'order_number', 'cashier_id', 'currency_id', 'sub_total', 'tax', 'discount', 'total', 'products_count')->filter()->orderBy('id', 'desc')->paginate(25);
-        $users = User::select('id', 'name')->where('business_id', auth()->user()->business_id)->get();
+        $orders = Order::select('id', 'order_number', 'cashier_id', 'currency_id', 'sub_total', 'tax', 'discount', 'total', 'products_count')->filter()->orderBy('id', 'desc')->paginate(10);
+        $users = User::select('id', 'name')->get();
 
         $data = compact('orders', 'users');
         return view('app.orders.index', $data);
@@ -36,20 +36,16 @@ class OrderController extends Controller
 
     public function destroy(Order $order)
     {
-        if ($order->can_delete()) {
-            $text = ucwords(auth()->user()->name) .  " deleted Order " . $order->id . ", datetime: " . now();
+        $text = ucwords(auth()->user()->name) .  " deleted Order " . $order->id . ", datetime: " . now();
 
-            foreach ($order->items() as $item) {
-                $item->delete();
-            }
-
-            $order->delete();
-            Log::create(['text' => $text]);
-
-            return redirect()->back()->with('success', "Order successfully deleted!");
-        } else {
-            return redirect()->back()->with('danger', 'Unable to delete');
+        foreach ($order->items() as $item) {
+            $item->delete();
         }
+
+        $order->delete();
+        Log::create(['text' => $text]);
+
+        return redirect()->back()->with('success', "Order successfully deleted!");
     } //end of order
 
     public function export()

@@ -23,7 +23,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('id', 'name', 'email', 'phone')->filter()->orderBy('id', 'desc')->paginate(25);
+        $users = User::select('id', 'name', 'email', 'phone')->filter()->orderBy('id', 'desc')->paginate(10);
 
         return view('app.users.index', compact('users'));
     }

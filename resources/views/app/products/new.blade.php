@@ -43,25 +43,32 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label class="required form-label">Quantity</label>
-                            <input type="number" class="form-control" name="quantity" step="any" min="0"
-                                placeholder="Enter Quantity..." value="{{ old('quantity') }}" required />
+                            <label class="required form-label">Stock</label>
+                            <input type="number" class="form-control" name="stock" step="any" min="0"
+                                placeholder="Enter Stock..." value="{{ old('stock') }}" required />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="required form-label">Cost</label>
                             <input type="number" class="form-control" name="cost" step="any" min="0"
                                 placeholder="Enter Cost..." value="{{ old('cost') }}" required />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label class="required form-label">Price</label>
                             <input type="number" class="form-control" name="price" step="any" min="0"
                                 placeholder="Enter Price..." value="{{ old('price') }}" required />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Compare Price</label>
+                            <input type="number" class="form-control" name="compare_price" step="any" min="0"
+                                placeholder="Enter Compare Price..." value="{{ old('compare_price') }}" />
                         </div>
                     </div>
                 </div>
@@ -122,25 +129,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="form-label">Barcodes</label>
-                            <div id="barcode-wrapper">
-                                <div class="input-group mb-2">
-                                    <input type="text" class="form-control" name="barcodes[]"
-                                        placeholder="Enter Barcode" />
-                                    <button type="button" class="btn btn-danger btn-sm remove-barcode"><i
-                                            class="fa fa-trash"></i></button>
-                                </div>
-                            </div>
-                            <button type="button" id="add-barcode" class="btn btn-success mt-2"><i
-                                    class="fa fa-plus"></i> Barcode</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
             <div class="card-footer pt-0">
                 <div class="d-flex align-items-center justify-content-around">
@@ -151,52 +139,4 @@
         </form>
     </div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var barcodeWrapper = document.getElementById('barcode-wrapper');
-        var addBarcodeBtn = document.getElementById('add-barcode');
-
-        function checkDuplicates() {
-            var barcodeInputs = document.querySelectorAll('input[name="barcodes[]"]');
-            var barcodeValues = [];
-
-            barcodeInputs.forEach(function(input) {
-                input.addEventListener('input', function() {
-                    barcodeValues = [];
-                    barcodeInputs.forEach(function(innerInput) {
-                        if (barcodeValues.includes(innerInput.value.trim()) && innerInput.value.trim() !== '') {
-                            innerInput.classList.add('is-invalid');
-                        } else {
-                            innerInput.classList.remove('is-invalid');
-                            barcodeValues.push(innerInput.value.trim());
-                        }
-                    });
-                });
-            });
-        }
-
-        addBarcodeBtn.addEventListener('click', function() {
-            var newBarcodeInput = document.createElement('div');
-            newBarcodeInput.classList.add('input-group', 'mb-2');
-
-            newBarcodeInput.innerHTML = `
-                <input type="text" class="form-control" name="barcodes[]" placeholder="Enter Barcode" />
-                <button type="button" class="btn btn-danger btn-sm remove-barcode"><i class="fa fa-trash"></i></button>
-            `;
-
-            barcodeWrapper.appendChild(newBarcodeInput);
-            checkDuplicates();
-        });
-
-        barcodeWrapper.addEventListener('click', function(event) {
-            if (event.target.classList.contains('remove-barcode')) {
-                event.target.closest('.input-group').remove();
-            }
-        });
-
-        checkDuplicates();
-    });
-</script>
-
 @endsection

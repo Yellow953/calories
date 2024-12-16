@@ -24,7 +24,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::select('id', 'name', 'quantity', 'cost', 'price', 'image', 'category_id', 'description')->filter()->orderBy('id', 'desc')->paginate(25);
+        $products = Product::select('id', 'name', 'stock', 'cost', 'price', 'image', 'category_id', 'description')->filter()->orderBy('id', 'desc')->paginate(10);
         $categories = Category::select('id', 'name')->get();
 
         $data = compact('products', 'categories');
@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:products',
-            'quantity' => 'required|numeric|min:1',
+            'stock' => 'required|numeric|min:1',
             'cost' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required',
@@ -64,7 +64,7 @@ class ProductController extends Controller
 
         $product = Product::create([
             'name' => $request->name,
-            'quantity' => $request->quantity,
+            'stock' => $request->stock,
             'cost' => $request->cost,
             'price' => $request->price,
             'category_id' => $request->category_id,
@@ -169,15 +169,15 @@ class ProductController extends Controller
     public function save(Product $product, Request $request)
     {
         $request->validate([
-            'quantity' => 'required|numeric|min:0',
+            'stock' => 'required|numeric|min:0',
         ]);
 
         $product->update([
-            'quantity' => $product->quantity + $request->quantity,
+            'stock' => $product->stock + $request->stock,
         ]);
 
         Log::create([
-            'text' => ucwords(auth()->user()->name) . ' imported ' . $request->quantity . ' pcs to Product: ' . $product->name . ', datetime: ' . now(),
+            'text' => ucwords(auth()->user()->name) . ' imported ' . $request->stock . ' pcs to Product: ' . $product->name . ', datetime: ' . now(),
         ]);
 
         return redirect()->route('products')->with('success', 'Stock Imported Successfully...');
