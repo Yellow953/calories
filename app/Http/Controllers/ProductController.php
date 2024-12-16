@@ -67,16 +67,11 @@ class ProductController extends Controller
             'stock' => $request->stock,
             'cost' => $request->cost,
             'price' => $request->price,
+            'compare_price' => $request->compare_price,
             'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $path,
         ]);
-
-        if ($request->barcodes[0] != null) {
-            foreach ($request->barcodes as $barcode) {
-                $product->barcodes()->create(['barcode' => $barcode]);
-            }
-        }
 
         $text = ucwords(auth()->user()->name) .  " created Product: " . $product->name . ", datetime: " . now();
         Log::create(['text' => $text]);
@@ -119,18 +114,11 @@ class ProductController extends Controller
             'name' => $request->name,
             'cost' => $request->cost,
             'price' => $request->price,
+            'compare_price' => $request->compare_price,
             'category_id' => $request->category_id,
             'description' => $request->description,
             'image' => $path,
         ]);
-
-        if ($request->barcodes[0] != null) {
-            $barcodes = array_filter(array_map('trim', $request->barcodes));
-            $product->barcodes()->delete();
-            foreach ($barcodes as $barcode) {
-                $product->barcodes()->create(['barcode' => $barcode]);
-            }
-        }
 
         $text = ucwords(auth()->user()->name) .  " updates Product: " . $request->name . ", datetime: " . now();
         Log::create(['text' => $text]);
@@ -146,10 +134,6 @@ class ProductController extends Controller
             if ($product->image != 'assets/images/no_img.png') {
                 $path = public_path($product->image);
                 File::delete($path);
-            }
-
-            foreach ($product->barcodes as $barcode) {
-                $barcode->delete();
             }
 
             $product->delete();
