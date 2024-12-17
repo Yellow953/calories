@@ -9,7 +9,7 @@ Home
     <div class="container">
         <div class="row mb-5">
             <div class="col-4">
-                <div class="card card-1">
+                <div class="card home-card card-1">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Organic Products</h5>
@@ -21,7 +21,7 @@ Home
                 </div>
             </div>
             <div class="col-4">
-                <div class="card card-2">
+                <div class="card home-card card-2">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Sugar-Free <br>
@@ -34,7 +34,7 @@ Home
                 </div>
             </div>
             <div class="col-4">
-                <div class="card card-3">
+                <div class="card home-card card-3">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Dried Fruits</h5>
@@ -48,7 +48,7 @@ Home
         </div>
         <div class="row">
             <div class="col-6">
-                <div class="card card-4">
+                <div class="card home-card card-4">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Weight Loss Supplements</h5>
@@ -60,7 +60,7 @@ Home
                 </div>
             </div>
             <div class="col-6">
-                <div class="card card-5">
+                <div class="card home-card card-5">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">Protein Snacks</h5>
