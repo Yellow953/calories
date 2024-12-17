@@ -92,4 +92,7 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
+Route::get('/product/{product:name}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+Route::get('/checkout', [App\Http\Controllers\HomeController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/order', [App\Http\Controllers\HomeController::class, 'order'])->name('order');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
