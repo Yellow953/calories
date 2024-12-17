@@ -30,9 +30,6 @@
             </ul>
             @auth()
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="btn btn-primary nav-link px-3 py-3 {{Route::is('profile') ? 'active': ''}}" title="Profile" href="{{Route('profile', Auth::user()->user_id)}}"><i class="fa-solid fa-user"></i></a>
-                </li>
                 <li>
                     <form action="{{Route('logout')}}" method="POST">
                         @csrf
@@ -44,10 +41,7 @@
             @guest
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('login') ? 'active': ''}}" href="{{route('login')}}">LOGIN</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn btn-primary nav-link px-3 py-3" href="{{route('register')}}">REGISTER</a>
+                    <a class="nav-link btn-primary {{Route::is('login') ? 'active': ''}}" href="{{route('login')}}">LOGIN</a>
                 </li>
             </ul>
             @endguest

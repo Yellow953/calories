@@ -20,15 +20,15 @@
                             {{--
                             <!--begin::Logo-->
                             <a href="{{ route('home') }}" class="d-flex flex-center">
-                                <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="login-logo"
-                                    width="150" height="125" />
+                            <img alt="Logo" src="{{ asset('assets/images/logo.png') }}" class="login-logo"
+                                width="150" height="125" />
                             </a>
                             <!--end::Logo--> --}}
 
                             <!--begin::Heading-->
                             <div class="text-center mb-11">
                                 <!--begin::Title-->
-                                <h1 class="text-dark fw-bolder my-4 display-6 primary-color">Sign In</h1>
+                                <h1 class="text-dark fw-bolder my-4 display-6 orange-color">Sign In</h1>
                                 <!--end::Title-->
                             </div>
                             <!--begin::Heading-->
@@ -74,7 +74,7 @@
                                 <!--begin::Wrapper-->
                                 <div class="d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8">
                                     <!--begin::Link-->
-                                    <a href="{{ route('password.request') }}" class="link-primary primary-color">Forgot
+                                    <a href="{{ route('password.request') }}" class="link-primary orange-color">Forgot
                                         Password ?</a>
                                     <!--end::Link-->
                                 </div>
@@ -84,7 +84,7 @@
                             <!--begin::Submit button-->
                             <div class="d-grid mb-5">
                                 <button type="submit" id="kt_sign_in_submit"
-                                    class="btn btn-primary indicator-label-custom">
+                                    class="btn indicator-label-custom">
                                     <!--begin::Indicator label-->
                                     <span class="indicator-label">Sign In</span>
                                     <!--end::Indicator label-->

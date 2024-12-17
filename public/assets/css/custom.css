@@ -119,3 +119,27 @@ table thead tr th {
 .text-right {
     text-align: right;
 }
+
+.indicator-label-custom {
+    background-color: rgba(219, 86, 35, 0.5);
+    border: #db5623 2px solid !important;
+    color: white;
+}
+
+.indicator-label-custom:hover {
+    background-color: #db5623;
+    color: white;
+}
+
+.orange-color {
+    color: #db5623 !important;
+}
+
+.link-primary.orange-color:hover {
+    color: #9c340b !important;
+}
+
+.login-card-custom {
+    border: #db5623 3px solid !important;
+    box-shadow: #1b1b1d 0px 0px 15px !important;
+}
