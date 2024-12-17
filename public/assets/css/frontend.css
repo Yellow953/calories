@@ -155,7 +155,7 @@ section {
 
 /* ----------Footer---------- */
 footer {
-    background: var(--lighter-secondary-color);
+    background: var(--secondary-color);
 }
 
 .img-footer {
