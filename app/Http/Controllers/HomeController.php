@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -15,17 +17,19 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about');
+        return view('frontend.about');
     }
 
     public function contact()
     {
-        return view('contact');
+        return view('frontend.contact');
     }
 
-    public function shop()
+    public function shop(Category $category, Product $product)
     {
-        return view('shop');
+        $categories = Category::all();
+        $products = Product::paginate(12);
+        return view('frontend.shop', compact('categories', 'products'));
     }
     public function setLocale($locale)
     {
