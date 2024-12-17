@@ -53,13 +53,13 @@ Contact
                     <form>
                         <div class="mb-3 animate-on-scroll slide-right">
                             <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" required />
+                            <input type="text" class="form-control input" id="name" required />
                         </div>
                         <div class="mb-3 animate-on-scroll slide-right">
                             <label for="email" class="form-label">Email</label>
                             <input
                                 type="email"
-                                class="form-control"
+                                class="form-control input"
                                 id="email"
                                 required />
                         </div>
@@ -67,14 +67,14 @@ Contact
                             <label for="subject" class="form-label">Subject</label>
                             <input
                                 type="text"
-                                class="form-control"
+                                class="form-control input"
                                 id="subject"
                                 required />
                         </div>
                         <div class="mb-3 animate-on-scroll slide-up">
                             <label for="message" class="form-label">Message</label>
                             <textarea
-                                class="form-control"
+                                class="form-control input"
                                 id="message"
                                 rows="5"
                                 required></textarea>

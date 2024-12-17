@@ -210,3 +210,21 @@ footer {
 .rounded {
     border-radius: 20px !important;
 }
+
+/* ----------Form---------- */
+
+.input {
+    border: var(--secondary-color) 2px solid;
+    background-color: rgba(219, 86, 35, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.input:hover {
+    background-color: rgba(219, 86, 35, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+.input:focus {
+    background-color: rgba(219, 86, 35, 0.3);
+    transition: all 0.3s ease-in-out;
+}
