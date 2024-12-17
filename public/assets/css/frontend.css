@@ -80,6 +80,18 @@ section {
     padding-top: 120px;
 }
 
+/* ----------Text---------- */
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.text-white-shadow {
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
+}
 /* ----------Card---------- */
 .card {
     border: none !important;
@@ -139,4 +151,19 @@ section {
 .card-text {
     color: var(--dark-text);
     text-shadow: var(--light-bg) 1px 2px 5px;
+}
+
+/* ----------Footer---------- */
+footer {
+    background: var(--lighter-secondary-color);
+}
+
+.img-footer {
+    width: auto;
+    height: fit-content;
+}
+
+.rounded-white {
+    border-radius: 200px !important;
+    background-color: var(--light-text) !important;
 }
