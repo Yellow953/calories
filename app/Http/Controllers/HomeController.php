@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -12,6 +13,20 @@ class HomeController extends Controller
         return view('index');
     }
 
+    public function about()
+    {
+        return view('about');
+    }
+
+    public function contact()
+    {
+        return view('contact');
+    }
+
+    public function shop()
+    {
+        return view('shop');
+    }
     public function setLocale($locale)
     {
         if (in_array($locale, ['en', 'ar'])) {

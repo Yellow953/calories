@@ -1,14 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LogController;
-use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\NotificationController;
 
 Auth::routes();
 
@@ -87,4 +88,8 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+//Frontend
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
