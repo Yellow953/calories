@@ -3,8 +3,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="mb-3">
-                    <input type="text" class="form-control input" name="q" id="searchInput" placeholder="Type to search..."
-                        autocomplete="off" autofocus>
+                    <input type="text" class="form-control input" name="q" id="searchInput"
+                        placeholder="Type to search..." autocomplete="off" autofocus>
                 </div>
 
                 <div id="searchResults" class="list-group"></div>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="mt-4">
-            <button class="btn btn-primary w-100">Proceed to Checkout</button>
+            <a href="{{ route('checkout') }}" class="btn btn-primary w-100">Proceed to Checkout</a>
         </div>
     </div>
 </div>

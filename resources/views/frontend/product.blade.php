@@ -6,7 +6,7 @@
 <section>
     <div class="container pb-5">
         <div class="row">
-            <div class="col-md-4 mt-5">
+            <div class="col-md-6 mt-5">
                 <div class="card mb-3 position-relative overflow-hidden">
                     <!-- Main Image -->
                     <img class="card-img img-fluid" src="{{ asset($product->image) }}" alt="Product image"
@@ -54,18 +54,15 @@
             </div>
 
             <!-- col end -->
-            <div class="col-md-4 mt-5">
+            <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2 text-gold">{{ ucwords($product->name) }}</h1>
+                        <h1 class="h2 text-primary">{{ ucwords($product->name) }}</h1>
                         <div class="my-3">
                             <div class="d-flex justify-content-between my-2">
                                 <span class="fw-bold">Category:</span> {{
                                 ucwords($product->category->name) }}
                             </div>
-                            {{-- <div class="d-flex justify-content-between my-2">
-                                <span class="fw-bold">MCode:</span> {{ $product->mcode }}
-                            </div> --}}
                         </div>
                         <div class="d-flex justify-content-between align-content-center">
                             <div class="fw-bold">Price</div>
@@ -75,87 +72,60 @@
                         </div>
 
                         <div class="mt-3 w-100">
-                            <a href="https://api.whatsapp.com/send?text=Check%20this%20amazing%20{{ Str::replace(' ', '%20', $product->category->name) }}%20{{ route('product', $product->id) }}"
-                                target="_blank" id="share" class="btn share">Share <i
-                                    class="bi bi-share-fill mx-2"></i></a>
+                            <input type="number" min="0" step="1" value="1" name="quantity" id="quantity"
+                                class="form-control my-2" required>
+                            <a href="#" id="addtocart" class="btn btn-primary btn-cta my-2">
+                                Add To Cart <i class="fa-solid fa-cart-shopping"></i>
+                            </a>
+                            <a href="#" id="addtocart" class="btn btn-primary btn-cta my-2">
+                                Buy Now <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                            <a href="https://web.whatsapp.com/send?autoload=1&app_absent=0&phone=96170285659&text=I%20want%20this%20{{ Str::replace(' ', '%20', $product->category->name) }}%20{{ route('product', $product->id) }}"
-                                target="_blank" id="iwantthis" class="btn iwantthis bg-gold">I Want This
-                                {{ucwords($product->category->name)}} <i class="bi bi-whatsapp mx-2"></i></a>
+                <div class="card mt-4">
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        {{-- <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-gold fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                    Product Information
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                <div class="accordion-body p-0">
+                                    <table class="table table-striped text-center m-0">
+                                        <tr>
+                                            <td>Karat</td>
+                                            <td>{{ $product->karat }}K</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Weight</td>
+                                            <td>{{ $product->weight }}g</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div> --}}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button text-gold fw-bold collapsed" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
+                                    aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                                    Description
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+                                <div class="accordion-body">
+                                    {{ $product->description }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-4 my-5">
-                <div class="accordion" id="accordionPanelsStayOpenExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button text-gold fw-bold collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
-                                aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                Product Information
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                            <div class="accordion-body p-0">
-                                <table class="table table-striped text-center m-0">
-                                    <tr>
-                                        <td>Karat</td>
-                                        <td>{{ $product->karat }}K</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Weight</td>
-                                        <td>{{ $product->weight }}g</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button text-gold fw-bold collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
-                                aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
-                                Description
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
-                            <div class="accordion-body">
-                                {{ $product->description }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button text-gold fw-bold collapsed" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree"
-                                aria-expanded="true" aria-controls="panelsStayOpen-collapseThree">
-                                We Buy It Back
-                            </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show">
-                            <div class="accordion-body p-0">
-                                <table class="table table-striped text-center m-0">
-                                    <tr>
-                                        <th>Pristine</th>
-                                        <th>Good</th>
-                                        <th>Abused</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold text-success">${{ number_format($product->green_price, 2) }}
-                                        </td>
-                                        <td class="fw-bold text-warning">${{ number_format(($product->red_price +
-                                            $product->green_price) / 2, 2) }}
-                                        </td>
-                                        <td class="fw-bold text-danger">${{ number_format($product->red_price, 2) }}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
 
         <div class="row mt-5">
@@ -173,7 +143,7 @@
                         <div class="row">
                             @foreach ($chunk as $product)
                             <div class="col-3">
-                                <a href="{{ route('product', $product->id) }}">
+                                <a href="{{ route('product', $product->name) }}">
                                     <img class="card-img border img-fluid" src="{{ asset($product->image) }}"
                                         alt="{{ $product->name }}">
                                 </a>
