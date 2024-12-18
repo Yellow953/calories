@@ -215,6 +215,11 @@ a.text-secondary:hover {
 .category-item {
     border-radius: 20px;
     padding: 10px;
+    height: 260px;
+}
+.category-title {
+    height: 74px;
+    justify-content: center;
 }
 
 .category-img {

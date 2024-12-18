@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'HOME')
+@section('title', 'Home')
 
 @section('content')
 <div class="container">
@@ -15,7 +15,9 @@
                             <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                         </a>
                     </div>
-                    <h5 class="category-title text-center mt-2">{{ ucwords($category->name) }}</h5>
+                    <div class="d-flex flex-column category-title">
+                        <h5 class="text-center mt-2">{{ ucwords($category->name) }}</h5>
+                    </div>
                 </div>
                 @endforeach
             </div>
@@ -71,7 +73,7 @@
                             <img src="{{ asset($product->image) }}" class="img-fluid category-img">
                         </a>
                     </div>
-                    <h5 class="category-title text-center mt-2">{{ ucwords($product->name) }}</h5>
+                    <h5 class="category-title text-center text-primary mt-2">{{ ucwords($product->name) }}</h5>
                 </div>
                 @endforeach
             </div>
