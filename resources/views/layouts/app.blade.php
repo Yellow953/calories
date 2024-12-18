@@ -48,6 +48,8 @@
     @include('layouts._footer')
 
     @include('layouts._modals')
+
+    <script src="{{ asset('assets/js/frontend.js') }}"></script>
 </body>
 
 </html>

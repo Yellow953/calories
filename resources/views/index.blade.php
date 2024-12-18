@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('title')
-Home
-@endsection
+@section('title', 'HOME')
 
 @section('content')
-<section>
-    <div class="container">
+<div class="container">
+    <section>
         <div class="row mb-5">
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="card home-card card-1">
@@ -72,6 +70,38 @@ Home
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section>
+        <h2>Categories</h2>
+        <div class="owl-carousel owl-theme categories">
+            @foreach ($categories as $category)
+            <div class="category-item bg-white">
+                <div class="category-image">
+                    <a href="{{ route('shop', $category->name) }}">
+                        <img src="{{ asset($category->image) }}" class="img-fluid">
+                    </a>
+                </div>
+                <h3 class="category-title">{{ ucwords($category->name) }}</h3>
+            </div>
+            @endforeach
+        </div>
+    </section>
+
+    <section>
+        <h2>Best Sellers</h2>
+        <div class="owl-carousel owl-theme products">
+            @foreach ($products as $product)
+            <div class="product-item bg-white">
+                <div class="product-image">
+                    <a href="{{ route('product', $product->name) }}">
+                        <img src="{{ asset($product->image) }}" class="img-fluid">
+                    </a>
+                </div>
+                <h3 class="product-title">{{ ucwords($product->name) }}</h3>
+            </div>
+            @endforeach
+        </div>
+    </section>
+</div>
 @endsection

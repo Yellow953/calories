@@ -12,7 +12,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $categories = Category::select('id', 'name', 'image')->get();
+        $products = Product::select('id', 'name', 'image')->limit(10)->get();
+
+        $data = compact('categories', 'products');
+        return view('index', $data);
     }
 
     public function about()
