@@ -143,7 +143,7 @@
                         <div class="row">
                             @foreach ($chunk as $product)
                             <div class="col-3">
-                                <a href="{{ route('product', $product->id) }}">
+                                <a href="{{ route('product', $product->name) }}">
                                     <img class="card-img border img-fluid" src="{{ asset($product->image) }}"
                                         alt="{{ $product->name }}">
                                 </a>

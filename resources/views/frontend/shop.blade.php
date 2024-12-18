@@ -14,7 +14,7 @@
                             @foreach ($categories as $category)
                             <div class="category-item bg-white">
                                 <div class="category-image">
-                                    <a href="{{ route('shop', $category->name) }}">
+                                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}">
                                         <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                                     </a>
                                 </div>
