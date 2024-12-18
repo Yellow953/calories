@@ -88,6 +88,9 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+// Search
+Route::get('/search/products', [HomeController::class, 'search'])->name('products.search');
+
 //Frontend
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');

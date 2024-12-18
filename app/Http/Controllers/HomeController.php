@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -29,8 +29,31 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $products = Product::paginate(12);
-        return view('frontend.shop', compact('categories', 'products'));
+
+        $data = compact('categories', 'products');
+        return view('frontend.shop', $data);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+
+        if (!$query) {
+            return response()->json([]);
+        }
+
+        $products = Product::where('name', 'like', '%' . $query . '%')
+            ->take(10)
+            ->get(['id', 'name', 'image']);
+
+        $products = $products->map(function ($product) {
+            $product->url = route('product', $product->name);
+            return $product;
+        });
+
+        return response()->json($products);
+    }
+
     public function setLocale($locale)
     {
         if (in_array($locale, ['en', 'ar'])) {
