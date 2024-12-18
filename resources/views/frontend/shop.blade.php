@@ -27,14 +27,16 @@
                 <div class="row mt-4">
                     @foreach($products as $product)
                     <div class="col-6 col-md-3 mb-3">
-                        <div class="card item-card">
-                            <img src="{{ $product->image }}" class="product-img" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $product->name }}</h5>
-                                <p class="card-text">Price: {{ $product->price }} LBP</p>
-                                <a href="" class="btn btn-primary">View Product</a>
+                        <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
+                            <div class="card item-card">
+                                <img src="{{ $product->image }}" class="img-fluid product-img">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ $product->name }}</h5>
+                                    <a href="{{ route('product', $product->name) }}" class="btn btn-primary mt-3">View
+                                        Product</a>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @endforeach
                     <div class="d-flex justify-content-center mt-4">

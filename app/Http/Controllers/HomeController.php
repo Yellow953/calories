@@ -29,13 +29,27 @@ class HomeController extends Controller
         return view('frontend.contact');
     }
 
-    public function shop(Category $category, Product $product)
+    public function shop(Request $request)
     {
         $categories = Category::select('id', 'name', 'image')->get();
-        $products = Product::select('id', 'name', 'category_id', 'price', 'image')->filter()->paginate(12);
+
+        if ($request->input('category')) {
+            $category = Category::where('name', $request->input('category'))->firstOrFail();
+            $products = Product::select('id', 'name', 'category_id', 'image')->where('category_id', $category->id)->paginate(12);
+        } else {
+            $products = Product::select('id', 'name', 'category_id', 'image')->paginate(12);
+        }
 
         $data = compact('categories', 'products');
         return view('frontend.shop', $data);
+    }
+
+    public function product(Product $product)
+    {
+        $products = Product::select('id', 'name', 'image')->where('category_id', $product->category_id)->limit(10)->get();
+
+        $data = compact('product', 'products');
+        return view('frontend.product', $data);
     }
 
     public function search(Request $request)
@@ -73,5 +87,16 @@ class HomeController extends Controller
         Auth::logout();
 
         return redirect('login');
+    }
+
+    public function checkout()
+    {
+        return view('frontend.checkout');
+    }
+
+    public function order(Request $request)
+    {
+
+        return view('frontend.thankyou');
     }
 }
