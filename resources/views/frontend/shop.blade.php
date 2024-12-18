@@ -1,27 +1,25 @@
 @extends('layouts.app')
 
-@section('title')
-Shop
-@endsection
+@section('title', 'Shop')
 
 @section('content')
 <section>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('shop') }}" method="GET" class="d-flex justify-content-center mb-4">
-                    <input type="text" name="query" class="form-control rounded-pill" placeholder="Search products..." aria-label="Search products">
-                    <button type="submit" class="btn btn-primary ms-2">Search</button>
-                </form>
                 <div class="row">
                     <div class="col-12">
                         <h5 class="text-primary fw-semibold mb-3">Categories</h5>
-                        <div class="d-flex flex-wrap">
-                            @foreach($categories as $category)
-                            <a href="{{ route('shop', ['category' => $category->slug]) }}" class="text-decoration-none card category-card me-2 mb-3 p-3">
-                                <img src="{{ $category->image }}" class="category-img" alt="">
-                                <p class="text-center text-dark fw-bold mt-4">{{ $category->name }}</p>
-                            </a>
+                        <div class="owl-carousel owl-theme categories">
+                            @foreach ($categories as $category)
+                            <div class="category-item bg-white">
+                                <div class="category-image">
+                                    <a href="{{ route('shop', $category->name) }}">
+                                        <img src="{{ asset($category->image) }}" class="img-fluid">
+                                    </a>
+                                </div>
+                                <h3 class="category-title">{{ ucwords($category->name) }}</h3>
+                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -47,4 +45,26 @@ Shop
         </div>
     </div>
 </section>
+
+
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });
+    });
+</script>
 @endsection

@@ -27,8 +27,8 @@ class HomeController extends Controller
 
     public function shop(Category $category, Product $product)
     {
-        $categories = Category::all();
-        $products = Product::paginate(12);
+        $categories = Category::select('id', 'name', 'image')->get();
+        $products = Product::select('id', 'name', 'category_id', 'price', 'image')->filter()->paginate(12);
 
         $data = compact('categories', 'products');
         return view('frontend.shop', $data);
