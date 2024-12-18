@@ -1,21 +1,36 @@
 @extends('layouts.app')
 
-@section('title', 'HOME')
+@section('title', 'Home')
 
 @section('content')
+<div class="hero">
+    <div class="overlay">
+        <div class="row h-100vh w-100">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column align-items-center justify-content-center h-100">
+                    <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid hero-logo">
+                    <h1 class="fw-bold text-end hero-title">Healthy Living <br>Starts Here!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <section>
         <div>
-            <h2 class="text-primary fw-bold text-center mb-4">Categories</h2>
+            <h2 class="hero-title fw-bold text-center mb-4">Categories</h2>
             <div class="owl-carousel owl-theme categories">
                 @foreach ($categories as $category)
                 <div class="category-item bg-white">
-                    <div class="category-image">
-                        <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}">
+                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}" class="text-decoration-none text-primary">
+                        <div class="category-image">
                             <img src="{{ asset($category->image) }}" class="img-fluid category-img">
-                        </a>
-                    </div>
-                    <h5 class="category-title text-center mt-2">{{ ucwords($category->name) }}</h5>
+                        </div>
+                        <div class="d-flex flex-column category-title">
+                            <h5 class="text-center mt-2">{{ ucwords($category->name) }}</h5>
+                        </div>
+                    </a>
                 </div>
                 @endforeach
             </div>
@@ -62,7 +77,7 @@
         </div>
 
         <div class="mt-4">
-            <h2 class="text-primary fw-bold text-center mb-4">Best Sellers</h2>
+            <h2 class="hero-title fw-bold text-center mb-4">Best Sellers</h2>
             <div class="owl-carousel owl-theme products">
                 @foreach ($products as $product)
                 <div class="category-item bg-white">
@@ -71,7 +86,7 @@
                             <img src="{{ asset($product->image) }}" class="img-fluid category-img">
                         </a>
                     </div>
-                    <h5 class="category-title text-center mt-2">{{ ucwords($product->name) }}</h5>
+                    <h5 class="category-title text-center text-primary mt-2">{{ ucwords($product->name) }}</h5>
                 </div>
                 @endforeach
             </div>

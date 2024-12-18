@@ -12,7 +12,7 @@
                 <!-- Left Column -->
                 <div class="col-md-7">
                     <div class="card p-4">
-                        <h3 class="text-primary mb-4">Checkout</h3>
+                        <h3 class="text-secondary mb-4">Checkout</h3>
 
                         <!-- Contact Information -->
                         <div class="mb-4">
@@ -23,7 +23,7 @@
 
                         <!-- Shipping Information -->
                         <div class="mb-4">
-                            <h4 class="text-primary mb-3">Shipping Address</h4>
+                            <h4 class="text-secondary mb-3">Shipping Address</h4>
                             <div class="mb-3">
                                 <label for="name" class="form-label">Full Name</label>
                                 <input type="text" id="name" name="name" class="form-control" placeholder="John Doe"
@@ -77,7 +77,7 @@
                 <!-- Right Column -->
                 <div class="col-md-5">
                     <div class="card p-4 border-primary">
-                        <h4 class="text-primary mb-4">Order Summary</h4>
+                        <h4 class="text-secondary mb-4">Order Summary</h4>
                         <div class="summary-card">
                             <!-- Example Cart Items -->
                             <div class="cart-item">
