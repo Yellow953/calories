@@ -15,10 +15,10 @@
                             <div class="category-item bg-white">
                                 <div class="category-image">
                                     <a href="{{ route('shop', $category->name) }}">
-                                        <img src="{{ asset($category->image) }}" class="img-fluid">
+                                        <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                                     </a>
                                 </div>
-                                <h3 class="category-title">{{ ucwords($category->name) }}</h3>
+                                <h5 class="category-title text-center mt-2">{{ ucwords($category->name) }}</h5>
                             </div>
                             @endforeach
                         </div>
