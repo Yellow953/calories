@@ -55,6 +55,38 @@ body {
     color: var(--primary-color) !important;
 }
 
+.desktop-hidden {
+    display: none;
+}
+
+.m-hidden {
+    display: flex;
+}
+
+/* ----------Media Queries---------- */
+
+@media (max-width: 768px) {
+    .navbar {
+        background: var(--light-text) !important;
+        padding: 20px 0px !important;
+    }
+    .navbar-collapse.collapse.show {
+        transition: all 0.2s ease-in-out;
+    }
+    .navbar-collapse.collapse.show ul {
+        background: var(--light-text) !important;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+    }
+    .m-hidden {
+        display: none;
+    }
+    .desktop-hidden {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
 /* ----------Buttons---------- */
 .btn-primary {
     color: var(--secondary-color) !important;
