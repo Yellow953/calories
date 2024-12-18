@@ -184,11 +184,15 @@ class ProductController extends Controller
         foreach ($request->file('images') as $image) {
             $ext = $image->getClientOriginalExtension();
             $filename = time() . '-' . $counter . '.' . $ext;
-            $image->move('uploads/products/', $filename);
+            $picture = Image::make($image);
+            $picture->fit(300, 300, function ($constraint) {
+                $constraint->upsize();
+            });
+            $picture->move('uploads/products/', $filename);
             $path = '/uploads/products/' . $filename;
 
             SecondaryImage::create([
-                'product_id' => $request->product_id ?? null,
+                'product_id' => $product->id ?? null,
                 'path' => $path,
                 'created_at' => now(),
                 'updated_at' => now(),
