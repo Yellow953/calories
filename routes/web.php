@@ -68,6 +68,9 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/{product}/import', [ProductController::class, 'import'])->name('products.import');
             Route::post('/{product}/save', [ProductController::class, 'save'])->name('products.save');
             Route::get('/{product}/destroy', [ProductController::class, 'destroy'])->name('products.destroy');
+            Route::get('/{product}/images', [ProductController::class, 'images'])->name('products.images');
+            Route::post('/{product}/upload', [ProductController::class, 'upload'])->name('products.upload');
+            Route::get('/secondary_images/{secondary_image}/destroy', [ProductController::class, 'clean'])->name('secondary_images.destroy');
             Route::get('/', [ProductController::class, 'index'])->name('products');
         });
 

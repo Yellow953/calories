@@ -6,6 +6,7 @@ use App\Exports\ProductsExport;
 use App\Models\Category;
 use App\Models\Log;
 use App\Models\Product;
+use App\Models\SecondaryImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -17,7 +18,7 @@ class ProductController extends Controller
     {
         $this->middleware('permission:products.read')->only('index');
         $this->middleware('permission:products.create')->only(['new', 'create']);
-        $this->middleware('permission:products.update')->only(['edit', 'update']);
+        $this->middleware('permission:products.update')->only(['edit', 'update', 'import', 'save', 'images', 'upload']);
         $this->middleware('permission:products.delete')->only('destroy');
         $this->middleware('permission:products.export')->only('export');
     }
@@ -165,6 +166,47 @@ class ProductController extends Controller
         ]);
 
         return redirect()->route('products')->with('success', 'Stock Imported Successfully...');
+    }
+
+    public function images(Product $product)
+    {
+        return view('app.products.images', compact('product'));
+    }
+
+    public function upload(Product $product, Request $request)
+    {
+        $this->validate($request, [
+            'images.*' => 'image'
+        ]);
+
+        $counter = 0;
+
+        foreach ($request->file('images') as $image) {
+            $ext = $image->getClientOriginalExtension();
+            $filename = time() . '-' . $counter . '.' . $ext;
+            $image->move('uploads/products/', $filename);
+            $path = '/uploads/products/' . $filename;
+
+            SecondaryImage::create([
+                'product_id' => $request->product_id ?? null,
+                'path' => $path,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            $counter++;
+        }
+
+        return redirect()->route('products')->with('success', 'Images Upleaded Successfully...');
+    }
+
+    public function clean(SecondaryImage $image)
+    {
+        $path = public_path($image->path);
+        File::delete($path);
+        $image->delete();
+
+        return redirect()->back()->with('danger', 'Image deleted...');
     }
 
     public function export()

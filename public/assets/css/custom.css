@@ -143,3 +143,33 @@ table thead tr th {
     border: #db5623 3px solid !important;
     box-shadow: #1b1b1d 0px 0px 15px !important;
 }
+
+.image-wrapper {
+    display: inline-block;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    transition: filter 0.3s;
+}
+
+.image-wrapper:hover {
+    filter: brightness(50%);
+}
+
+.delete-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: red;
+    color: white !important;
+    padding: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font: 2rem bolder !important;
+}
+
+.image-wrapper:hover .delete-overlay {
+    opacity: 1;
+}

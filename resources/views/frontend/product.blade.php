@@ -14,43 +14,26 @@
                 </div>
 
                 <!-- Secondary Images Carousel -->
-                {{-- @if ($product->secondary_image_1 && $product->secondary_image_2 && $product->secondary_image_3)
+                @if ($product->secondary_images)
                 <div class="row">
                     <div id="multi-item-example" class="col-12 carousel slide carousel-multi-item pointer-event"
                         data-bs-ride="carousel">
                         <div class="carousel-inner product-links-wap" role="listbox">
                             <div class="carousel-item active">
                                 <div class="row">
-                                    <!-- Secondary Image 1 -->
-                                    <div class="col-4">
-                                        <a href="#" class="secondary-image"
-                                            data-image="{{ asset($product->secondary_image_1) }}">
-                                            <img class="card-img border img-fluid"
-                                                src="{{ asset($product->secondary_image_1) }}" alt="Product Image 1">
+                                    @foreach ($product->secondary_images as $image)
+                                    <div class="col-4 p-2">
+                                        <a href="#" class="secondary-image" data-image="{{ asset($image->path) }}">
+                                            <img class="card-img border img-fluid" src="{{ asset($image->path) }}">
                                         </a>
                                     </div>
-                                    <!-- Secondary Image 2 -->
-                                    <div class="col-4">
-                                        <a href="#" class="secondary-image"
-                                            data-image="{{ asset($product->secondary_image_2) }}">
-                                            <img class="card-img border img-fluid"
-                                                src="{{ asset($product->secondary_image_2) }}" alt="Product Image 2">
-                                        </a>
-                                    </div>
-                                    <!-- Secondary Image 3 -->
-                                    <div class="col-4">
-                                        <a href="#" class="secondary-image"
-                                            data-image="{{ asset($product->secondary_image_3) }}">
-                                            <img class="card-img border img-fluid"
-                                                src="{{ asset($product->secondary_image_3) }}" alt="Product Image 3">
-                                        </a>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endif --}}
+                @endif
             </div>
 
             <!-- col end -->
@@ -88,7 +71,7 @@
                     <div class="accordion" id="accordionPanelsStayOpenExample">
                         {{-- <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button text-gold fw-bold collapsed" type="button"
+                                <button class="accordion-button text-primary fw-bold collapsed" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
                                     aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                                     Product Information
@@ -111,7 +94,7 @@
                         </div> --}}
                         <div class="accordion-item">
                             <h2 class="accordion-header">
-                                <button class="accordion-button text-gold fw-bold collapsed" type="button"
+                                <button class="accordion-button text-primary fw-bold collapsed" type="button"
                                     data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo"
                                     aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
                                     Description
@@ -129,7 +112,7 @@
         </div>
 
         <div class="row mt-5">
-            <h2 class="my-4 text-gold">Simillar Products</h2>
+            <h2 class="my-4 text-primary">Simillar Products</h2>
 
             <!-- Start Carousel Wrapper -->
             <div id="multi-item-example" class="col-12 carousel slide carousel-multi-item pointer-event"
@@ -158,7 +141,7 @@
             <!-- End Carousel Wrapper -->
 
             <div class="row mt-5">
-                <h2 class="my-4 text-gold">Frequently Asked Questions</h2>
+                <h2 class="my-4 text-primary">Frequently Asked Questions</h2>
 
                 <div class="accordion" id="accordionPanelsStayOpenExample1">
                     <div class="accordion-item">
@@ -215,9 +198,7 @@
         </div>
     </div>
 </section>
-@endsection
 
-{{-- @section('scripts')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const secondaryImages = document.querySelectorAll('.secondary-image');
@@ -232,4 +213,4 @@
         });
     });
 </script>
-@endsection --}}
+@endsection

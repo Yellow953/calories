@@ -23,6 +23,11 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function secondary_images()
+    {
+        return $this->hasMany(SecondaryImage::class);
+    }
+
     // Filter
     public function scopeFilter($q)
     {

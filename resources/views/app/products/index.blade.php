@@ -154,13 +154,15 @@
                                 {{ ucwords($product->category->name) }}
                             </td>
                             <td class="d-flex justify-content-end border-0">
-                                @can('products.create')
+                                @can('products.update')
                                 <a href="{{ route('products.import', $product->id) }}"
                                     class="btn btn-icon btn-success btn-sm me-1">
                                     <i class="bi bi-plus-lg"></i>
                                 </a>
-                                @endcan
-                                @can('products.update')
+                                <a href="{{ route('products.images', $product->id) }}"
+                                    class="btn btn-icon btn-primary btn-sm me-1">
+                                    <i class="bi bi-card-image"></i>
+                                </a>
                                 <a href="{{ route('products.edit', $product->id) }}"
                                     class="btn btn-icon btn-warning btn-sm me-1">
                                     <i class="bi bi-pen-fill"></i>
