@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="mb-3">
-                    <input type="text" class="form-control" name="q" id="searchInput" placeholder="Type to search..."
+                    <input type="text" class="form-control input" name="q" id="searchInput" placeholder="Type to search..."
                         autocomplete="off" autofocus>
                 </div>
 
@@ -17,15 +17,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-3">
             <div class="modal-header px-4 border-bottom-0">
-                <h5 class="modal-title fw-bold text-dark" id="profileModalLabel">Preferences</h5>
+                <h5 class="modal-title fw-bold text-secondary" id="profileModalLabel">Preferences</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4">
                 <!-- Language Selection -->
                 <div class="mb-4">
                     <label for="languageSelect" class="form-label fw-medium text-muted">Language</label>
-                    <select id="languageSelect" class="form-select px-3 py-2 rounded-3"
-                        style="background-color: #f9f9f9;">
+                    <select id="languageSelect" class="form-select px-3 py-2 rounded-3 bg-secondary">
                         <option value="en" selected>English</option>
                         <option value="ar">Arabic</option>
                         <option value="fr">French</option>
@@ -35,12 +34,11 @@
                 <!-- Currency Selection -->
                 <div class="mb-4">
                     <label for="currencySelect" class="form-label fw-medium text-muted">Currency</label>
-                    <select id="currencySelect" class="form-select px-3 py-2 rounded-3"
-                        style="background-color: #f9f9f9;">
-                        <option value="usd" selected>USD - US Dollar</option>
-                        <option value="eur">EUR - Euro</option>
-                        <option value="sar">SAR - Saudi Riyal</option>
-                        <option value="aed">AED - UAE Dirham</option>
+                    <select id="currencySelect" class="form-select px-3 py-2 rounded-3 bg-secondary">
+                        <option class="bg-light" value="usd" selected>USD - US Dollar</option>
+                        <option class="bg-light" value="eur">EUR - Euro</option>
+                        <option class="bg-light" value="sar">SAR - Saudi Riyal</option>
+                        <option class="bg-light" value="aed">AED - UAE Dirham</option>
                     </select>
                 </div>
             </div>
@@ -58,7 +56,7 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">Your Cart</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -84,11 +82,11 @@
 
         <div class="cart-summary">
             <div class="d-flex justify-content-between">
-                <span>Total Items:</span>
+                <span class="text-secondary">Total Items:</span>
                 <span id="cart-total-items">3</span>
             </div>
             <div class="d-flex justify-content-between">
-                <span>Total Price:</span>
+                <span class="text-secondary">Total Price:</span>
                 <span id="cart-total-price">$50.00</span>
             </div>
         </div>
@@ -103,7 +101,7 @@
     const searchInput = document.getElementById("searchInput");
     const resultsContainer = document.getElementById("searchResults");
 
-    searchInput.addEventListener("input", function () {
+    searchInput.addEventListener("input", function() {
         const query = searchInput.value.trim();
 
         if (query === "") {
