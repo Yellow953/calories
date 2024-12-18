@@ -28,7 +28,7 @@ Shop
                 </div>
                 <div class="row mt-4">
                     @foreach($products as $product)
-                    <div class="col-3 mb-3">
+                    <div class="col-6 col-md-3 mb-3">
                         <div class="card item-card">
                             <img src="{{ $product->image }}" class="product-img" alt="...">
                             <div class="card-body">

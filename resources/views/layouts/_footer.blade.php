@@ -1,13 +1,13 @@
 <footer>
-    <div class="d-flex mt-5">
-        <div class="col-3">
+    <div class="d-block d-md-flex mt-5">
+        <div class="col-md-3 m-hidden">
             <img src="{{ asset('assets/images/footer.png') }}" alt="" class="img-fluid img-footer">
         </div>
-        <div class="col-2 align-content-center">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="img-fluid img-footer rounded-white ms-4">
+        <div class="col-12 col-md-2 align-content-center text-center">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="" class="img-fluid img-footer rounded-white ms-md-4 mt-5 mt-md-0">
         </div>
-        <div class="col-7 text-shadow">
-            <div class="ms-5 mt-5">
+        <div class="col-12 col-md-7 text-shadow">
+            <div class="ms-md-5 mt-5">
                 <h3 class="text-white fw-bold text-center">Get in Touch</h3>
                 <div class="row ms-0 me-0">
                     <div class="col-6">

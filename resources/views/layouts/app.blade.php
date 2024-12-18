@@ -34,9 +34,9 @@
 
 <body>
     @include('layouts._header')
-
-    @yield('content')
-
+    <div class="mt-5 mt-md-2">
+        @yield('content')
+    </div>
     @include('layouts._footer')
 
     @include('layouts._modals')

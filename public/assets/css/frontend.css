@@ -85,6 +85,9 @@ body {
         display: flex;
         flex-direction: row;
     }
+    .img-footer {
+        width: 50% !important;
+    }
 }
 
 /* ----------Buttons---------- */
