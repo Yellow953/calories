@@ -139,6 +139,10 @@ a.text-secondary:hover {
 .text-white-shadow {
     text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
 }
+
+.bg-secondary {
+    background-color: var(--lighter-secondary-color) !important;
+}
 /* ----------Card---------- */
 .home-card {
     border: none !important;
