@@ -70,7 +70,7 @@ return [
     'payment_info' => 'معلومات الدفع',
     'payment_method' => 'طريقة الدفع',
     'cash_on_delivery' => 'الدفع عند الاستلام',
-    'addional_info' => 'معلومات إضافية',
+    'additional_info' => 'معلومات إضافية',
     'notes' => 'ملاحظات',
     'optional' => 'اختياري',
     'order_summary' => 'ملخص الطلب',
@@ -78,4 +78,8 @@ return [
     'total' => 'الإجمالي',
     'shipping' => 'الشحن',
     'complete_order' => 'إكمال الطلب',
+    'best_sellers' => 'أفضل المبيعات',
+    'quantity' => 'كمية',
+    'aboutus' => 'معلومات عنا',
+    'remove' => 'يزيل',
 ];

@@ -66,43 +66,28 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">{{__('landing.yourcart')}}</h5>
+        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">{{ __('landing.yourcart') }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
         <div id="cart-items">
-            <div class="cart-item d-flex align-items-center mb-3">
-                <img src="https://via.placeholder.com/50" alt="Product Image" class="img-fluid rounded me-3">
-                <div class="flex-grow-1">
-                    <h6 class="mb-0">Product Name</h6>
-                    <small class="text-muted">Price: $10.00 | Qty: 1</small>
-                </div>
-                <button class="btn btn-sm btn-danger">Remove</button>
-            </div>
-            <div class="cart-item d-flex align-items-center mb-3">
-                <img src="https://via.placeholder.com/50" alt="Product Image" class="img-fluid rounded me-3">
-                <div class="flex-grow-1">
-                    <h6 class="mb-0">Another Product</h6>
-                    <small class="text-muted">Price: $20.00 | Qty: 2</small>
-                </div>
-                <button class="btn btn-sm btn-danger">Remove</button>
-            </div>
+            <!-- Cart items will be dynamically populated here -->
         </div>
         <hr>
 
         <div class="cart-summary">
             <div class="d-flex justify-content-between">
-                <span class="text-secondary">{{__('landing.total_items')}}:</span>
-                <span id="cart-total-items">3</span>
+                <span class="text-secondary">{{ __('landing.total_items') }}:</span>
+                <span id="cart-total-items">0</span>
             </div>
             <div class="d-flex justify-content-between">
-                <span class="text-secondary">{{__('landing.total_price')}}:</span>
-                <span id="cart-total-price">$50.00</span>
+                <span class="text-secondary">{{ __('landing.total_price') }}:</span>
+                <span id="cart-total-price">$0.00</span>
             </div>
         </div>
 
         <div class="mt-4">
-            <a href="{{ route('checkout') }}" class="btn btn-primary w-100">{{__('landing.proceed_to_checkout')}}</a>
+            <a href="{{ route('checkout') }}" class="btn btn-primary w-100">{{ __('landing.proceed_to_checkout') }}</a>
         </div>
     </div>
 </div>
@@ -148,4 +133,57 @@
                 console.error("Error fetching search results:", error);
             });
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get cart from cookies
+        const cart = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('cart='))
+            ?.split('=')[1];
+        const cartData = cart ? JSON.parse(decodeURIComponent(cart)) : [];
+
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalItemsElement = document.getElementById('cart-total-items');
+        const totalPriceElement = document.getElementById('cart-total-price');
+
+        let totalItems = 0;
+        let totalPrice = 0;
+
+        cartItemsContainer.innerHTML = '';
+        cartData.forEach((item, index) => {
+            totalItems += item.quantity;
+            totalPrice += item.price * item.quantity;
+
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
+
+            cartItem.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <div class="flex-grow-1">
+                    <h6 class="mb-0">${item.name}</h6>
+                    <small class="text-muted">{{ __('landing.price') }}: $${item.price} | {{ __('landing.quantity') }}: ${item.quantity}</small>
+                </div>
+                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">{{ __('landing.remove') }}</button>
+            `;
+
+            cartItemsContainer.appendChild(cartItem);
+        });
+
+        totalItemsElement.textContent = totalItems;
+        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    });
+
+    function removeFromCart(index) {
+        const cart = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('cart='))
+            ?.split('=')[1];
+        const cartData = cart ? JSON.parse(decodeURIComponent(cart)) : [];
+
+        if (index >= 0 && index < cartData.length) {
+            cartData.splice(index, 1);
+            document.cookie = `cart=${encodeURIComponent(JSON.stringify(cartData))}; path=/`;
+            location.reload();
+        }
+    }
 </script>

@@ -70,7 +70,7 @@ return [
     'payment_info' => 'Payment Information',
     'payment_method' => 'Payment Method',
     'cash_on_delivery' => 'Cash On Delivery',
-    'addional_info' => 'Additional Information',
+    'additional_info' => 'Additional Information',
     'notes' => 'Notes',
     'optional' => 'Optional',
     'order_summary' => 'Order Summary',
@@ -78,4 +78,8 @@ return [
     'total' => 'Total',
     'shipping' => 'Shipping',
     'complete_order' => 'Complete Order',
+    'best_sellers' => 'Best Sellers',
+    'quantity' => 'Quantity',
+    'aboutus' => 'About Us',
+    'remove' => 'Remove',
 ];
