@@ -1,5 +1,5 @@
 <footer>
-    <div class="d-block d-md-flex mt-5">
+    <div class="d-block d-md-flex">
         <div class="col-md-3 m-hidden">
             <img src="{{ asset('assets/images/footer.png') }}" alt="" class="img-fluid img-footer">
         </div>

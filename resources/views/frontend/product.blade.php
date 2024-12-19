@@ -3,7 +3,7 @@
 @section('title', ucwords($product->name))
 
 @section('content')
-<section>
+<section class="pb-5">
     <div class="container pb-5">
         <div class="row">
             <div class="col-md-6 mt-5">

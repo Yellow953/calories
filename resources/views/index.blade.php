@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<div class="container">
+<div class="container pb-5">
     <section>
         <div>
             <h2 class="hero-title fw-bold text-center mb-4">Categories</h2>
