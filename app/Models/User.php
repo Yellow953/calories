@@ -19,6 +19,8 @@ class User extends Authenticatable
         'password',
         'phone',
         'address',
+        'city',
+        'country',
     ];
 
     protected $hidden = [
@@ -36,7 +38,7 @@ class User extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany(Order::class, 'cashier_id');
+        return $this->hasMany(Order::class, 'client_id');
     }
 
     // Filter
@@ -57,6 +59,14 @@ class User extends Authenticatable
         if (request('address')) {
             $address = request('address');
             $q->where('address', 'LIKE', "%{$address}%");
+        }
+        if (request('city')) {
+            $city = request('city');
+            $q->where('city', 'LIKE', "%{$city}%");
+        }
+        if (request('country')) {
+            $country = request('country');
+            $q->where('country', 'LIKE', "%{$country}%");
         }
 
         return $q;

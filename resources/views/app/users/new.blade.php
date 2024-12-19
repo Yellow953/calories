@@ -48,6 +48,20 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group mt-5">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" name="city" placeholder="Enter City..."
+                            value="{{ old('city') }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">Country</label>
+                        <input type="text" class="form-control" name="country" placeholder="Enter Country..."
+                            value="{{ old('country') }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
                         <label class="required form-label">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="Enter Password..."
                             required />

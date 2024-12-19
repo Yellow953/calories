@@ -22,7 +22,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::select('id', 'order_number', 'cashier_id', 'currency_id', 'sub_total', 'tax', 'discount', 'total', 'products_count')->filter()->orderBy('id', 'desc')->paginate(10);
+        $orders = Order::select('id', 'order_number', 'payment_method', 'client_id', 'sub_total', 'total', 'products_count')->filter()->orderBy('id', 'desc')->paginate(10);
         $users = User::select('id', 'name')->get();
 
         $data = compact('orders', 'users');

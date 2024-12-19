@@ -6,6 +6,8 @@
 <section class="pb-5">
     <div class="container">
         <div class="checkout-container">
+            @include('app.layouts._flash')
+
             <form class="form" action="{{ route('order') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -120,11 +122,11 @@
         const cartItemsContainer = document.getElementById('cart-items-container');
         const subtotalElement = document.getElementById('subtotal-price');
         const totalElement = document.getElementById('total-price');
-        const shippingCost = 10; // Flat shipping cost
+        const shippingCost = 10;
 
         let subtotal = 0;
+        let count = 0;
 
-        // Populate cart items
         cartData.forEach(item => {
             subtotal += item.price * item.quantity;
 
@@ -138,7 +140,13 @@
                     <small>{{ __('landing.quantity') }}: ${item.quantity}</small>
                 </div>
                 <p class="ms-auto">$${(item.price * item.quantity).toFixed(2)}</p>
+                <input type="hidden" name="cart[${count}][id]" value="${item.id}">
+                <input type="hidden" name="cart[${count}][name]" value="${item.name}">
+                <input type="hidden" name="cart[${count}][image]" value="${item.image}">
+                <input type="hidden" name="cart[${count}][quantity]" value="${item.quantity}">
+                <input type="hidden" name="cart[${count}][price]" value="${item.price}">
             `;
+            count++;
 
             cartItemsContainer.appendChild(cartItem);
         });

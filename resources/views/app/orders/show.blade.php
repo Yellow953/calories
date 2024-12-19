@@ -30,11 +30,6 @@
 <!--begin::Body-->
 
 <body id="kt_app_body" class="print-content-only app-default">
-    @php
-    $business = auth()->user()->business;
-    $currency = $order->currency;
-    @endphp
-
     <!--begin::App-->
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <!--begin::Main-->
@@ -56,7 +51,7 @@
                             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                                 <!--begin::Item-->
                                 <li class="breadcrumb-item text-muted">
-                                    <a href="{{ route('dashboard') }}" class="text-muted text-hover-primary">Home</a>
+                                    <a href="{{ route('app') }}" class="text-muted text-hover-primary">Home</a>
                                 </li>
                                 <!--end::Item-->
                                 <!--begin::Item-->
@@ -107,6 +102,33 @@
                                     <div class="d-flex justify-content-between flex-column flex-sm-row mb-19">
                                         <div>
                                             <h4 class="fw-bolder text-gray-800 fs-2qx pe-5 pb-7">Order</h4>
+
+                                            <div class="flex-root d-flex flex-column mt-4">
+                                                <span class="text-muted">Client</span>
+                                                <span class="fs-5">{{ $order->client->name }}</span>
+                                                <span class="fs-5">{{ $order->client->email }}</span>
+                                                <span class="fs-5">{{ $order->client->phone }}</span>
+                                                <span class="fs-5">{{ $order->client->country }}</span>
+                                                <span class="fs-5">{{ $order->client->city }}</span>
+                                                <span class="fs-5">{{ $order->client->address }}</span>
+                                            </div>
+                                        </div>
+                                        <!--end::Logo-->
+                                        <div class="text-sm-end">
+                                            <!--begin::Logo-->
+                                            <a href="#" class="d-block mw-150px ms-sm-auto">
+                                                <img alt="Logo" src="{{ asset('assets/images/logo.png') }}"
+                                                    class="w-50" />
+                                            </a>
+                                            <!--end::Logo-->
+                                            <!--begin::Text-->
+                                            <div class="text-sm-end fw-semibold fs-4 mt-7">
+                                                <div class="text-dark">Calories</div>
+                                                {{-- <div>{{ $business->email }}</div>
+                                                <div>{{ $business->phone }}</div>
+                                                <div>{{ $business->address }}</div> --}}
+                                            </div>
+                                            <!--end::Text-->
                                             <div class="flex-root d-flex flex-column mt-4">
                                                 <span class="text-muted">Order Number</span>
                                                 <span class="fs-5">#{{ $order->order_number }}</span>
@@ -116,33 +138,17 @@
                                                 <span class="fs-5">{{ $order->created_at }}</span>
                                             </div>
                                         </div>
-                                        <!--end::Logo-->
-                                        <div class="text-sm-end">
-                                            <!--begin::Logo-->
-                                            <a href="#" class="d-block mw-150px ms-sm-auto">
-                                                <img alt="Logo" src="{{ asset($business->logo) }}" class="w-50" />
-                                            </a>
-                                            <!--end::Logo-->
-                                            <!--begin::Text-->
-                                            <div class="text-sm-end fw-semibold fs-4 mt-7">
-                                                <div class="text-dark">{{ ucwords($business->name) }}</div>
-                                                <div>{{ $business->email }}</div>
-                                                <div>{{ $business->phone }}</div>
-                                                <div>{{ $business->address }}</div>
-                                            </div>
-                                            <!--end::Text-->
-                                        </div>
                                     </div>
                                     <!--end::Header-->
                                     <!--begin::Body-->
                                     <div class="pb-12">
                                         <!--begin::Wrapper-->
                                         <div class="d-flex flex-column gap-7 gap-md-10">
-                                            @if ($order->note)
+                                            @if ($order->notes)
                                             <!--begin::Message-->
                                             <div class="fw-bold fs-2">
-                                                Note:
-                                                <span class="text-muted fs-5">{{ $order->note }}</span>
+                                                Notes:
+                                                <span class="text-muted fs-5">{{ $order->notes }}</span>
                                             </div>
                                             <!--begin::Message-->
                                             <!--begin::Separator-->
@@ -188,7 +194,7 @@
                                                                 <td class="text-end">{{ $item->quantity }}</td>
                                                                 <!--end::Quantity-->
                                                                 <!--begin::Total-->
-                                                                <td class="text-end">{{ $currency->symbol }}{{
+                                                                <td class="text-end">${{
                                                                     number_format($item->total, 2)
                                                                     }}</td>
                                                                 <!--end::Total-->
@@ -200,23 +206,15 @@
                                                             <!--begin::Subtotal-->
                                                             <tr class="text-dark fw-bold text-end">
                                                                 <td colspan="2">Subtotal</td>
-                                                                <td class="text-end">{{ $currency->symbol }}{{
+                                                                <td class="text-end">${{
                                                                     number_format($order->sub_total, 2) }}</td>
                                                             </tr>
                                                             <!--end::Subtotal-->
-                                                            <!--begin::VAT-->
-                                                            <tr class="text-dark fw-bold text-end">
-                                                                <td colspan="2">Tax</td>
-                                                                <td class="text-end">{{ $currency->symbol }}{{
-                                                                    number_format($order->tax, 2) }}</td>
-                                                            </tr>
-                                                            <!--end::VAT-->
                                                             <!--begin::Shipping-->
                                                             <tr class="text-dark fw-bold text-end">
-                                                                <td colspan="2">Discount
+                                                                <td colspan="2">Shipping
                                                                 </td>
-                                                                <td class="text-end">{{ $currency->symbol }}{{
-                                                                    number_format($order->discount, 2) }}</td>
+                                                                <td class="text-end">$10.00</td>
                                                             </tr>
                                                             <!--end::Shipping-->
                                                             <!--begin::Grand total-->
@@ -224,7 +222,7 @@
                                                                 <td colspan="2">
                                                                     Grand Total</td>
                                                                 <td class="text-dark fs-3 fw-bolder text-end">
-                                                                    {{ $currency->symbol }}{{
+                                                                    ${{
                                                                     number_format($order->total, 2) }}</td>
                                                             </tr>
                                                             <!--end::Grand total-->

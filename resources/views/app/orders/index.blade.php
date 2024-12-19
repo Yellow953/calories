@@ -55,12 +55,12 @@
                 <div class="row g-8 mb-8">
                     <!--begin::Col-->
                     <div class="col-md-6">
-                        <label class="fs-6 form-label fw-bold text-dark">Cashier</label>
-                        <select name="cashier_id" class="form-select" data-control="select2"
+                        <label class="fs-6 form-label fw-bold text-dark">Client</label>
+                        <select name="client_id" class="form-select" data-control="select2"
                             data-placeholder="Select an option">
                             <option value=""></option>
                             @foreach ($users as $user)
-                            <option value="{{ $user->id }}" {{ request()->query('cashier_id')==$user->id ?
+                            <option value="{{ $user->id }}" {{ request()->query('client_id')==$user->id ?
                                 'selected' :
                                 '' }}>{{ ucwords($user->name) }}</option>
                             @endforeach
@@ -69,9 +69,9 @@
                     <!--end::Col-->
                     <!--begin::Col-->
                     <div class="col-md-6">
-                        <label class="fs-6 form-label fw-bold text-dark">Note</label>
+                        <label class="fs-6 form-label fw-bold text-dark">Notes</label>
                         <input type="text" class="form-control form-control-solid border" name="note"
-                            value="{{ request()->query('note') }}" placeholder="Enter Note..." />
+                            value="{{ request()->query('notes') }}" placeholder="Enter Note..." />
                     </div>
                     <!--end::Col-->
                 </div>
@@ -116,17 +116,11 @@
                             </td>
                             <td>
                                 <div class="text-center">
-                                    Sub Total: {{ number_format($order->sub_total, 2)
-                                    }} {{ $order->currency->symbol }}
+                                    Sub Total: ${{ number_format($order->sub_total, 2)
+                                    }}
                                     <br>
-                                    Tax: {{ number_format($order->tax, 2)
-                                    }} {{ $order->currency->symbol }}
-                                    <br>
-                                    Discount: {{ number_format($order->discount, 2)
-                                    }} {{ $order->currency->symbol }}
-                                    <br>
-                                    Total: {{ number_format($order->total, 2)
-                                    }} {{ $order->currency->symbol }}
+                                    Total: ${{ number_format($order->total, 2)
+                                    }}
                                 </div>
                             </td>
                             <td class="text-center">
@@ -161,8 +155,8 @@
                     <tfoot>
                         <tr>
                             <th colspan="4">
-                                {{ $orders->appends(['order_number' => request()->query('order_number'), 'cashier_id' =>
-                                request()->query('cashier_id'), 'note' =>
+                                {{ $orders->appends(['order_number' => request()->query('order_number'), 'client_id' =>
+                                request()->query('client_id'), 'note' =>
                                 request()->query('note')])->links() }}
                             </th>
                         </tr>

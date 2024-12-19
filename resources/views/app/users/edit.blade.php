@@ -46,6 +46,20 @@
                             value="{{ $user->address }}" />
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">City</label>
+                        <input type="text" class="form-control" name="city" placeholder="Enter City..."
+                            value="{{ $user->city }}" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group mt-5">
+                        <label class="form-label">Country</label>
+                        <input type="text" class="form-control" name="country" placeholder="Enter Country..."
+                            value="{{ $user->country }}" />
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="form-group my-10">
                         <h3>Permissions</h3>
