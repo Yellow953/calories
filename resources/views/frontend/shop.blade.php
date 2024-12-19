@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Shop')
+@section('title', __('landing.shop'))
 
 @section('content')
 <section>
@@ -9,7 +9,7 @@
             <div class="col-12">
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="text-primary fw-semibold mb-3">Categories</h5>
+                        <h5 class="text-primary fw-semibold mb-3">{{__('landing.categories')}}</h5>
                         <div class="owl-carousel owl-theme categories">
                             @foreach ($categories as $category)
                             <div class="category-item bg-white">
@@ -32,8 +32,8 @@
                                 <img src="{{ $product->image }}" class="img-fluid product-img">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{ $product->name }}</h5>
-                                    <a href="{{ route('product', $product->name) }}" class="btn btn-primary mt-3">View
-                                        Product</a>
+                                    <a href="{{ route('product', $product->name) }}"
+                                        class="btn btn-primary mt-3">{{__('landing.view_product')}}</a>
                                 </div>
                             </div>
                         </a>

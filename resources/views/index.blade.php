@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', __('landing.home'))
 
 @section('content')
 <div class="hero">
@@ -10,7 +10,9 @@
             <div class="col-md-6">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
                     <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid hero-logo">
-                    <h1 class="fw-bold text-end hero-title">Healthy Living <br>Starts Here!</h1>
+                    <h1 class="fw-bold text-end hero-title">{{__('landing.healthy_living')}}
+                        <br>{{__('landing.starts_here')}}
+                    </h1>
                 </div>
             </div>
         </div>
@@ -19,11 +21,12 @@
 <div class="container">
     <section>
         <div>
-            <h2 class="hero-title fw-bold text-center mb-4">Categories</h2>
+            <h2 class="hero-title fw-bold text-center mb-4">{{__('landing.categories')}}</h2>
             <div class="owl-carousel owl-theme categories">
                 @foreach ($categories as $category)
                 <div class="category-item bg-white">
-                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}" class="text-decoration-none text-primary">
+                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}"
+                        class="text-decoration-none text-primary">
                         <div class="category-image">
                             <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                         </div>
@@ -41,10 +44,10 @@
                 <div class="card home-card card-1">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Organic Products</h5>
-                        <p class="card-text">Organic is always the way to go</p>
+                        <h5 class="card-title">{{__('landing.organic_products')}}</h5>
+                        <p class="card-text">{{__('landing.msg1')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">Shop Now</a>
+                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -53,11 +56,11 @@
                 <div class="card home-card card-2">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Sugar-Free <br>
-                            Healthy Snacks</h5>
-                        <p class="card-text">Who said you need sugar?</p>
+                        <h5 class="card-title">{{__('landing.sugar-free')}} <br>
+                            {{__('landing.healthy_snacks')}}</h5>
+                        <p class="card-text">{{__('landing.msg2')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">Shop Now</a>
+                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -66,10 +69,10 @@
                 <div class="card home-card card-3">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Dried Fruits</h5>
-                        <p class="card-text">Tasty and healthy</p>
+                        <h5 class="card-title">{{__('landing.dried_fruits')}}</h5>
+                        <p class="card-text">{{__('landing.tasty_and_healthy')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">Shop Now</a>
+                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -77,7 +80,7 @@
         </div>
 
         <div class="mt-4">
-            <h2 class="hero-title fw-bold text-center mb-4">Best Sellers</h2>
+            <h2 class="hero-title fw-bold text-center mb-4">{{__('landing.best_sellers')}}</h2>
             <div class="owl-carousel owl-theme products">
                 @foreach ($products as $product)
                 <div class="category-item bg-white">
@@ -98,10 +101,10 @@
                 <div class="card home-card card-4">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Weight Loss Supplements</h5>
-                        <p class="card-text">Get in shape faster than ever</p>
+                        <h5 class="card-title">{{__('landing.weight_loss_supplements')}}</h5>
+                        <p class="card-text">{{__('landing.msg3')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">Shop Now</a>
+                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -110,10 +113,10 @@
                 <div class="card home-card card-5">
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Protein Snacks</h5>
-                        <p class="card-text">The perfect snack to hit the gym</p>
+                        <h5 class="card-title">{{__('landing.protein_snacks')}}</h5>
+                        <p class="card-text">{{__('landing.msg4')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">Shop Now</a>
+                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>

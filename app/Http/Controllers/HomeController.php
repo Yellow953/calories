@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -72,13 +73,22 @@ class HomeController extends Controller
         return response()->json($products);
     }
 
-    public function setLocale($locale)
+    public function preferences(Request $request)
     {
-        if (in_array($locale, ['en', 'ar'])) {
-            app()->setLocale($locale);
-            session(['locale' => $locale]);
-        }
-        return redirect()->back();
+        $validated = $request->validate([
+            'language' => 'required|string|in:en,ar',
+            'currency' => 'required|string|in:usd,lbp',
+        ]);
+
+        $language = $validated['language'];
+        $currency = $validated['currency'];
+
+        App::setLocale($language);
+
+        $cookieLang = cookie('language', $language, 60 * 24 * 30);
+        $cookieCurrency = cookie('currency', $currency, 60 * 24 * 30);
+
+        return redirect()->back()->withCookies([$cookieLang, $cookieCurrency]);
     }
 
     public function custom_logout()

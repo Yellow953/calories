@@ -35,7 +35,7 @@
     {{-- Styles --}}
     <link rel="stylesheet" href="{{ asset('assets/css/frontend.css') }}">
 
-    <title>@yield('title') - Calories</title>
+    <title>@yield('title') - {{__('landing.calories')}}</title>
 </head>
 
 <body>
