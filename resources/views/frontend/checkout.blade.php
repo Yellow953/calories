@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Checkout')
+@section('title', __('landing.checkout'))
 
 @section('content')
 <section class="pb-5">
@@ -12,7 +12,7 @@
                     <!-- Left Column -->
                     <div class="col-md-7">
                         <div class="card p-4">
-                            <h3 class="text-secondary mb-4">Checkout</h3>
+                            <h3 class="text-secondary mb-4">{{__('landing.checkout')}}</h3>
 
                             <!-- Contact Information -->
                             <div class="mb-4">
@@ -119,5 +119,4 @@
             </form>
         </div>
     </div>
-</section>
-@endsection
+    @endsection

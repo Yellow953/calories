@@ -13,9 +13,6 @@ use App\Http\Controllers\NotificationController;
 
 Auth::routes();
 
-// Set Locale
-Route::get('set-locale/{locale}', [HomeController::class, 'setLocale'])->name('setLocale');
-
 // Auth
 Route::middleware(['auth'])->group(function () {
     // Logout
@@ -91,14 +88,20 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-// Search
-Route::get('/search/products', [HomeController::class, 'search'])->name('products.search');
+Route::middleware(['setLocale'])->group(function () {
+    // Preferences
+    Route::post('/preferences', [HomeController::class, 'preferences'])->name('preferences');
 
-//Frontend
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
-Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
-Route::get('/product/{product:name}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
-Route::get('/checkout', [App\Http\Controllers\HomeController::class, 'checkout'])->name('checkout');
-Route::post('/checkout/order', [App\Http\Controllers\HomeController::class, 'order'])->name('order');
-Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+    // Search
+    Route::get('/search/products', [HomeController::class, 'search'])->name('products.search');
+
+    //Frontend
+    Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+    Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
+    Route::get('/product/{product:name}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+    Route::get('/checkout', [App\Http\Controllers\HomeController::class, 'checkout'])->name('checkout');
+    Route::post('/checkout/order', [App\Http\Controllers\HomeController::class, 'order'])->name('order');
+    Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});

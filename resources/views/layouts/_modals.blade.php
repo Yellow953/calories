@@ -4,7 +4,7 @@
             <div class="modal-body">
                 <div class="mb-3">
                     <input type="text" class="form-control input" name="q" id="searchInput"
-                        placeholder="Type to search..." autocomplete="off" autofocus>
+                        placeholder="{{__('landing.typetosearch')}}" autocomplete="off" autofocus>
                 </div>
 
                 <div id="searchResults" class="list-group"></div>
@@ -16,47 +16,57 @@
 <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-3">
-            <div class="modal-header px-4 border-bottom-0">
-                <h5 class="modal-title fw-bold text-secondary" id="profileModalLabel">Preferences</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body px-4">
-                <!-- Language Selection -->
-                <div class="mb-4">
-                    <label for="languageSelect" class="form-label fw-medium text-muted">Language</label>
-                    <select id="languageSelect" class="form-select px-3 py-2 rounded-3 bg-secondary">
-                        <option value="en" selected>English</option>
-                        <option value="ar">Arabic</option>
-                        <option value="fr">French</option>
-                        <option value="de">German</option>
-                    </select>
+            <form action="{{ route('preferences') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <div class="modal-header px-4 border-bottom-0">
+                    <h5 class="modal-title fw-bold text-secondary" id="profileModalLabel">{{__('landing.preferences')}}
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <!-- Currency Selection -->
-                <div class="mb-4">
-                    <label for="currencySelect" class="form-label fw-medium text-muted">Currency</label>
-                    <select id="currencySelect" class="form-select px-3 py-2 rounded-3 bg-secondary">
-                        <option class="bg-light" value="usd" selected>USD - US Dollar</option>
-                        <option class="bg-light" value="eur">EUR - Euro</option>
-                        <option class="bg-light" value="sar">SAR - Saudi Riyal</option>
-                        <option class="bg-light" value="aed">AED - UAE Dirham</option>
-                    </select>
+                <div class="modal-body px-4">
+                    <!-- Language Selection -->
+                    <div class="mb-4">
+                        <label for="languageSelect"
+                            class="form-label fw-medium text-muted">{{__('landing.language')}}</label>
+                        <select id="languageSelect" name="language"
+                            class="form-select px-3 py-2 rounded-3 bg-secondary">
+                            <option value="en" {{ request()->cookie('language', 'en') == 'en' ? 'selected' : ''
+                                }}>{{__('landing.english')}}</option>
+                            <option value="ar" {{ request()->cookie('language', 'en') == 'ar' ? 'selected' : ''
+                                }}>{{__('landing.arabic')}}</option>
+                        </select>
+                    </div>
+                    <!-- Currency Selection -->
+                    <div class="mb-4">
+                        <label for="currencySelect"
+                            class="form-label fw-medium text-muted">{{__('landing.currency')}}</label>
+                        <select id="currencySelect" name="currency"
+                            class="form-select px-3 py-2 rounded-3 bg-secondary">
+                            <option class="bg-light" value="usd" {{ request()->cookie('currency', 'usd') == 'usd' ?
+                                'selected' : '' }}>{{__('landing.usd')}} - {{__('landing.usdollar')}}</option>
+                            <option class="bg-light" value="lbp" {{ request()->cookie('currency', 'usd') == 'lbp' ?
+                                'selected' : '' }}>{{__('landing.lbp')}} - {{__('landing.lebaneselira')}}</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer px-4 border-top-0 justify-content-between">
-                <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2" data-bs-dismiss="modal">
-                    Cancel
-                </button>
-                <button type="button" id="savePreferences" class="btn btn-primary rounded-pill px-4 py-2">
-                    Save Preferences
-                </button>
-            </div>
+                <div class="modal-footer px-4 border-top-0 justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2"
+                        data-bs-dismiss="modal">
+                        {{__('landing.cancel')}}
+                    </button>
+                    <button type="submit" id="savePreferences" class="btn btn-primary rounded-pill px-4 py-2">
+                        {{__('landing.save')}}
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
 <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">Your Cart</h5>
+        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">{{__('landing.yourcart')}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -82,17 +92,17 @@
 
         <div class="cart-summary">
             <div class="d-flex justify-content-between">
-                <span class="text-secondary">Total Items:</span>
+                <span class="text-secondary">{{__('landing.total_items')}}:</span>
                 <span id="cart-total-items">3</span>
             </div>
             <div class="d-flex justify-content-between">
-                <span class="text-secondary">Total Price:</span>
+                <span class="text-secondary">{{__('landing.total_price')}}:</span>
                 <span id="cart-total-price">$50.00</span>
             </div>
         </div>
 
         <div class="mt-4">
-            <a href="{{ route('checkout') }}" class="btn btn-primary w-100">Proceed to Checkout</a>
+            <a href="{{ route('checkout') }}" class="btn btn-primary w-100">{{__('landing.proceed_to_checkout')}}</a>
         </div>
     </div>
 </div>

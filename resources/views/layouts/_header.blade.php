@@ -29,16 +29,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto center-menu text-center">
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('home') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}" href="{{Route('home')}}">HOME</a>
+                    <a class="nav-link {{Route::is('home') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                        href="{{Route('home')}}">{{__('landing.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('about') ? 'active': ''}}" href="{{Route('about')}}">ABOUT</a>
+                    <a class="nav-link {{Route::is('shop') ? 'active': ''}}"
+                        href="{{Route('shop')}}">{{__('landing.shop')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('shop') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}" href="{{Route('shop')}}">SHOP</a>
+                    <a class="nav-link {{Route::is('about') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                        href="{{Route('about')}}">{{__('landing.about')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('contact') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}" href="{{Route('contact')}}">CONTACT</a>
+                    <a class="nav-link {{Route::is('contact') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                        href="{{Route('contact')}}">{{__('landing.contact')}}</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto m-hidden">
