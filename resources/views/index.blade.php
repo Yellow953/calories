@@ -2,6 +2,13 @@
 
 @section('title', __('landing.home'))
 
+@php
+use Stichoza\GoogleTranslate\GoogleTranslate;
+
+$translator = new GoogleTranslate();
+$translator->setTarget(app()->getLocale());
+@endphp
+
 @section('content')
 <div class="hero">
     <div class="overlay">
@@ -31,7 +38,7 @@
                             <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                         </div>
                         <div class="d-flex flex-column category-title">
-                            <h5 class="text-center mt-2">{{ ucwords($category->name) }}</h5>
+                            <h5 class="text-center mt-2">{{ $translator->translate($category->name) }}</h5>
                         </div>
                     </a>
                 </div>
@@ -89,7 +96,8 @@
                             <img src="{{ asset($product->image) }}" class="img-fluid category-img">
                         </a>
                     </div>
-                    <h5 class="category-title text-center text-primary mt-2">{{ ucwords($product->name) }}</h5>
+                    <h5 class="category-title text-center text-primary mt-2">{{ $translator->translate($product->name)
+                        }}</h5>
                 </div>
                 @endforeach
             </div>

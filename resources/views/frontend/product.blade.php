@@ -2,6 +2,13 @@
 
 @section('title', ucwords($product->name))
 
+@php
+use Stichoza\GoogleTranslate\GoogleTranslate;
+
+$translator = new GoogleTranslate();
+$translator->setTarget(app()->getLocale());
+@endphp
+
 @section('content')
 <section>
     <div class="container pb-5">
@@ -41,11 +48,11 @@
             <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2 text-primary">{{ ucwords($product->name) }}</h1>
+                        <h1 class="h2 text-primary">{{ $translator->translate($product->name) }}</h1>
                         <div class="my-3">
                             <div class="d-flex justify-content-between my-2">
                                 <span class="fw-bold">{{__('landing.category')}}:</span> {{
-                                ucwords($product->category->name) }}
+                                $translator->translate($product->category->name) }}
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-content-center">
@@ -105,7 +112,7 @@
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    {{ $product->description }}
+                                    {{ $translator->translate($product->description) }}
                                 </div>
                             </div>
                         </div>
@@ -132,7 +139,8 @@
                                 <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
                                     <img class="card-img border img-fluid" src="{{ asset($product->image) }}"
                                         alt="{{ $product->name }}">
-                                    <h5 class="category-title text-center text-primary mt-2">{{ ucwords($product->name)
+                                    <h5 class="category-title text-center text-primary mt-2">{{
+                                        $translator->translate($product->name)
                                         }}</h5>
                                 </a>
                             </div>
