@@ -33,11 +33,11 @@
                         href="{{Route('home')}}">{{__('landing.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('shop') ? 'active': ''}}"
+                    <a class="nav-link {{Route::is('shop') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
                         href="{{Route('shop')}}">{{__('landing.shop')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('about') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                    <a class="nav-link {{Route::is('about') ? 'active': ''}}"
                         href="{{Route('about')}}">{{__('landing.about')}}</a>
                 </li>
                 <li class="nav-item">
