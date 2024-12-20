@@ -15,11 +15,11 @@
         <div class="row mt-5">
             <div class="col-md-6">
                 <div class="py-5 text-center">
-                    <h2 class="mb-4 animate-on-scroll slide-left text-secondary fw-bold">{{__('landing.contact_info')}}
+                    <h2 class="mb-4 animate-on-scroll slide-left text-primary fw-bold">{{__('landing.contact_info')}}
                     </h2>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa-solid fa-location-dot text-secondary"></i></h5>
-                        <p>123 Music Street<br />Harmony City, HC 12345</p>
+                        <p>Lebanon, Saida , Natasha Saeed Street</p>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-clock text-secondary"></i></h5>
@@ -31,11 +31,12 @@
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-phone text-secondary"></i></h5>
-                        <p>(555) 123-4567</p>
+                        <p>+961 76 629 552</p>
+                        <p>+961 70 833 158</p>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-envelope text-secondary"></i></h5>
-                        <p>support@soundsavvy.com</p>
+                        <p>fatimakhansa97@gmail.com</p>
                     </div>
                     <div class="d-flex mt-3 justify-content-center">
                         <div class="social-icons animate-on-scroll slide-up text-center">
@@ -50,9 +51,11 @@
             </div>
             <div class="col-md-6">
                 <div class="card rounded p-5 text-center">
-                    <h2 class="mb-4 animate-on-scroll slide-right text-secondary fw-bold">
+                    <h2 class="mb-4 animate-on-scroll slide-right text-primary fw-bold">
                         {{__('landing.send_us_a_message')}}</h2>
-                    <form>
+                    <form class="form" action="{{ route('contact.send') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+
                         <div class="mb-3 animate-on-scroll slide-right">
                             <label for="name" class="form-label">{{__('landing.name')}}</label>
                             <input type="text" class="form-control input" id="name" required />
@@ -62,8 +65,8 @@
                             <input type="email" class="form-control input" id="email" required />
                         </div>
                         <div class="mb-3 animate-on-scroll slide-right">
-                            <label for="subject" class="form-label">{{__('landing.subject')}}</label>
-                            <input type="text" class="form-control input" id="subject" required />
+                            <label for="phone" class="form-label">{{__('landing.phone')}}</label>
+                            <input type="tel" class="form-control input" id="phone" required />
                         </div>
                         <div class="mb-3 animate-on-scroll slide-up">
                             <label for="message" class="form-label">{{__('landing.message')}}</label>

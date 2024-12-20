@@ -188,6 +188,25 @@ class HomeController extends Controller
         }
     }
 
+    public function send(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:12',
+            'message' => 'required|string',
+        ]);
+
+        $data = $request->all();
+
+        Mail::send('emails.contact', ['data' => $data,], function ($message) {
+            $message->to('fatimakhansa97@gmail.com')
+                ->subject('New Contact');
+        });
+
+        return redirect()->back()->with('success', 'Contact Form Submitted Successfully');
+    }
+
     private function sendOrderEmails(Order $order, User $user)
     {
         Mail::send('emails.order-confirmation', ['order' => $order, 'user' => $user], function ($message) use ($user) {
@@ -196,7 +215,7 @@ class HomeController extends Controller
         });
 
         Mail::send('emails.order-notification', ['order' => $order], function ($message) {
-            $message->to('joemazloum953@gmail.com')
+            $message->to('Fatimakhansa97@gmail.com')
                 ->subject('New Order Notification');
         });
     }

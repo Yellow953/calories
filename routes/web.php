@@ -96,12 +96,16 @@ Route::middleware(['setLocale'])->group(function () {
     Route::get('/search/products', [HomeController::class, 'search'])->name('products.search');
 
     //Frontend
+    Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
     Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+    Route::post('/contact/send', [App\Http\Controllers\HomeController::class, 'send'])->name('contact.send');
+
     Route::get('/shop', [App\Http\Controllers\HomeController::class, 'shop'])->name('shop');
     Route::get('/product/{product:name}', [App\Http\Controllers\HomeController::class, 'product'])->name('product');
+
     Route::get('/checkout', [App\Http\Controllers\HomeController::class, 'checkout'])->name('checkout');
     Route::post('/checkout/order', [App\Http\Controllers\HomeController::class, 'order'])->name('order');
-    Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });

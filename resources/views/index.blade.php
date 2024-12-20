@@ -54,7 +54,8 @@ $translator->setTarget(app()->getLocale());
                         <h5 class="card-title">{{__('landing.organic_products')}}</h5>
                         <p class="card-text">{{__('landing.msg1')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
+                            <a href="{{ route('shop') }}?category={{ urlencode('Organic') }}"
+                                class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,8 @@ $translator->setTarget(app()->getLocale());
                         </h5>
                         <p class="card-text">{{__('landing.msg2')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
+                            <a href="{{ route('shop') }}?category={{ urlencode('Sugar Free/Healthy Snacks') }}"
+                                class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +82,8 @@ $translator->setTarget(app()->getLocale());
                         <h5 class="card-title">{{__('landing.dried_fruits')}}</h5>
                         <p class="card-text">{{__('landing.tasty_and_healthy')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
+                            <a href="{{ route('shop') }}?category={{ urlencode('Dried Fruits') }}"
+                                class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -113,7 +116,8 @@ $translator->setTarget(app()->getLocale());
                         <h5 class="card-title">{{__('landing.weight_loss_supplements')}}</h5>
                         <p class="card-text">{{__('landing.msg3')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
+                            <a href="{{ route('shop') }}?category={{ urlencode('Weight Loss Supplements') }}"
+                                class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>
@@ -125,7 +129,8 @@ $translator->setTarget(app()->getLocale());
                         <h5 class="card-title">{{__('landing.protein_snacks')}}</h5>
                         <p class="card-text">{{__('landing.msg4')}}</p>
                         <div>
-                            <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>
+                            <a href="{{ route('shop') }}?category={{ urlencode('Protein Snacks') }}"
+                                class="btn btn-primary">{{__('landing.shopnow')}}</a>
                         </div>
                     </div>
                 </div>

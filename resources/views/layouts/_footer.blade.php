@@ -9,13 +9,13 @@
         </div>
         <div class="col-12 col-md-7 text-shadow">
             <div class="ms-md-5 mt-5 pb-4">
-                <h3 class="text-white fw-bold text-center">{{__('landing.get_in_touch')}}</h3>
+                <h3 class="text-secondary fw-bold text-center">{{__('landing.get_in_touch')}}</h3>
                 <div class="row ms-0 me-0">
                     <div class="col-6">
                         <ul class="list-unstyled text-center">
                             <a href="#" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa-solid fa-location-dot text-white"></i></li>
-                                <li class="text-white">Somewhere for example</li>
+                                <li class="text-white">Saida , Natasha Saeed Street</li>
                                 <li class="text-white">Lebanon</li>
                             </a>
                         </ul>
@@ -34,7 +34,7 @@
                         <ul class="list-unstyled text-center">
                             <a href="#" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-phone text-white"></i></li>
-                                <li class="text-white">+961 70 123 456</li>
+                                <li class="text-white">+961 76 629 552</li>
                             </a>
                         </ul>
                     </div>
@@ -42,7 +42,7 @@
                         <ul class="list-unstyled text-center">
                             <a href="#" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-envelope text-white"></i></li>
-                                <li class="text-white">email@example.com</li>
+                                <li class="text-white">fatimakhansa97@gmail.com</li>
                             </a>
                         </ul>
                     </div>
