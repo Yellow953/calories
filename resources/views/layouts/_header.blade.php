@@ -29,11 +29,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto center-menu text-center">
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('home') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                    <a class="nav-link {{Route::is('home') ? 'active': ''}}"
                         href="{{Route('home')}}">{{__('landing.home')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('shop') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                    <a class="nav-link {{Route::is('shop') ? 'active': ''}}"
                         href="{{Route('shop')}}">{{__('landing.shop')}}</a>
                 </li>
                 <li class="nav-item">
@@ -41,24 +41,24 @@
                         href="{{Route('about')}}">{{__('landing.about')}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('contact') ? 'active': ''}} {{Route::is('about') ? 'text-white': ''}}"
+                    <a class="nav-link {{Route::is('contact') ? 'active': ''}}"
                         href="{{Route('contact')}}">{{__('landing.contact')}}</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto m-hidden">
                 <li class="nav-item">
-                    <a class="nav-link  {{Route::is('about') ? 'text-white': ''}}" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
                         <i class="fa fa-search"></i>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  {{Route::is('about') ? 'text-white': ''}}" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
                         <i class="fa-solid fa-user"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  {{Route::is('about') ? 'text-white': ''}}" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
+                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
                         aria-controls="offcanvasCart">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>

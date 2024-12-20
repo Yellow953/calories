@@ -11,7 +11,7 @@ $translator->setTarget(app()->getLocale());
 
 @section('content')
 <div class="hero">
-    <div class="overlay">
+    <div class="home-overlay">
         <div class="row h-100vh w-100">
             <div class="col-md-6"></div>
             <div class="col-md-6">
@@ -64,7 +64,8 @@ $translator->setTarget(app()->getLocale());
                     <img src="{{ asset('assets/images/organic.jpg') }}" class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{__('landing.sugar-free')}} <br>
-                            {{__('landing.healthy_snacks')}}</h5>
+                            {{__('landing.healthy_snacks')}}
+                        </h5>
                         <p class="card-text">{{__('landing.msg2')}}</p>
                         <div>
                             <a href="#" class="btn btn-primary">{{__('landing.shopnow')}}</a>

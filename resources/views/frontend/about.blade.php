@@ -3,8 +3,8 @@
 @section('title', __('landing.about'))
 
 @section('content')
-<div class="about-hero">
-    <div class="about-overlay">
+<div>
+    <div class="overlay">
         <div class="row h-100vh w-100">
             <div class="col-md-6">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="lighter-secondary-bg pb-5">
+<div class="pb-5">
     <div class="container">
         <div class="row">
             <div class="col-12">
