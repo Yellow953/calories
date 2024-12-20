@@ -50,7 +50,8 @@
                 <div class="row ms-0 me-0">
                     <div class="col-6">
                         <ul class="list-unstyled text-center">
-                            <a href="#" class="text-decoration-none">
+                            <a href="https://www.instagram.com/calories_by_fatima" target="blank"
+                                class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa-brands fa-instagram text-white"></i></li>
                                 <li class="text-white">Instagram</li>
                             </a>
@@ -59,9 +60,10 @@
 
                     <div class="col-6">
                         <ul class="list-unstyled text-center">
-                            <a href="#" class="text-decoration-none">
-                                <li style=" font-size: 2rem;"><i class="fa-brands fa-facebook text-white"></i></li>
-                                <li class="text-white">Facebook</li>
+                            <a href="https://www.tiktok.com/@caloriesbyfatima?_t=8sNLacaOJpi&_r=1" target="blank"
+                                class="text-decoration-none">
+                                <li style=" font-size: 2rem;"><i class="fa-brands fa-tiktok text-white"></i></li>
+                                <li class="text-white">Tiktok</li>
                             </a>
                         </ul>
                     </div>
