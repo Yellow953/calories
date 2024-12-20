@@ -67,10 +67,10 @@ $translator->setTarget(app()->getLocale());
                         <div class="mt-3 w-100">
                             <input type="number" min="0" step="1" value="1" name="quantity" id="quantity"
                                 class="form-control my-2" required>
-                            <a href="#" id="addtocart" class="btn btn-cta my-2 shake">
+                            <a href="#" id="addToCart" class="btn btn-cta my-2 shake">
                                 {{__('landing.addtocart')}} <i class="fa-solid fa-cart-shopping"></i>
                             </a>
-                            <a href="#" id="addtocart" class="btn btn-cta my-2 shake">
+                            <a href="#" id="buyNow" class="btn btn-cta my-2 shake">
                                 {{__('landing.buynow')}} <i class="fa-solid fa-arrow-right"></i>
                             </a>
                         </div>
@@ -79,29 +79,6 @@ $translator->setTarget(app()->getLocale());
 
                 <div class="card mt-4">
                     <div class="accordion" id="accordionPanelsStayOpenExample">
-                        {{-- <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button text-primary fw-bold collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
-                                    aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                    Product Information
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
-                                <div class="accordion-body p-0">
-                                    <table class="table table-striped text-center m-0">
-                                        <tr>
-                                            <td>Karat</td>
-                                            <td>{{ $product->karat }}K</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight</td>
-                                            <td>{{ $product->weight }}g</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button text-primary fw-bold collapsed" type="button"
@@ -134,13 +111,13 @@ $translator->setTarget(app()->getLocale());
                     <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
                         <!-- Set the first slide as active -->
                         <div class="row">
-                            @foreach ($chunk as $product)
+                            @foreach ($chunk as $pr)
                             <div class="col-3">
-                                <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
-                                    <img class="card-img border img-fluid" src="{{ asset($product->image) }}"
-                                        alt="{{ $product->name }}">
+                                <a href="{{ route('product', $pr->name) }}" class="text-decoration-none">
+                                    <img class="card-img border img-fluid" src="{{ asset($pr->image) }}"
+                                        alt="{{ $pr->name }}">
                                     <h5 class="category-title text-center text-primary mt-2">{{
-                                        $translator->translate($product->name)
+                                        $translator->translate($pr->name)
                                         }}</h5>
                                 </a>
                             </div>
@@ -213,6 +190,66 @@ $translator->setTarget(app()->getLocale());
 </section>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const product = {
+            id: "{{ $product->id }}",
+            name: "{{ $product->name }}",
+            image: "{{ asset($product->image) }}",
+            price: "{{ $product->price }}",
+        };
+
+        const addToCartBtn = document.getElementById('addToCart');
+        const buyNowBtn = document.getElementById('buyNow');
+        const quantityInput = document.getElementById('quantity');
+
+        function getCart() {
+            const cart = document.cookie
+                .split('; ')
+                .find(row => row.startsWith('cart='))
+                ?.split('=')[1];
+            return cart ? JSON.parse(decodeURIComponent(cart)) : [];
+        }
+
+        function saveCart(cart) {
+            document.cookie = `cart=${encodeURIComponent(JSON.stringify(cart))}; path=/; max-age=${30 * 24 * 60 * 60}`;
+        }
+
+        addToCartBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            let cart = getCart();
+
+            const existingProduct = cart.find(item => item.id === product.id);
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            saveCart(cart);
+            alert('Product added to cart!');
+        });
+
+        buyNowBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            let cart = getCart();
+
+            const existingProduct = cart.find(item => item.id === product.id);
+            if (existingProduct) {
+                existingProduct.quantity += quantity;
+            } else {
+                cart.push({ ...product, quantity });
+            }
+
+            saveCart(cart);
+
+            window.location.href = "{{ route('checkout') }}";
+        });
+    });
+
     document.addEventListener('DOMContentLoaded', function() {
         const secondaryImages = document.querySelectorAll('.secondary-image');
         const mainImage = document.getElementById('product-detail');

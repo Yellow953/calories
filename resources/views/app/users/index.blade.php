@@ -76,6 +76,22 @@
                     <!--end::Col-->
 
                     <!--begin::Col-->
+                    <div class="col-md-6">
+                        <label class="fs-6 form-label fw-bold text-dark">City</label>
+                        <input type="text" class="form-control" name="city" value="{{ request()->query('city') }}"
+                            placeholder="Enter City..." />
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
+                    <div class="col-md-6">
+                        <label class="fs-6 form-label fw-bold text-dark">Country</label>
+                        <input type="text" class="form-control" name="country" value="{{ request()->query('country') }}"
+                            placeholder="Enter Country..." />
+                    </div>
+                    <!--end::Col-->
+
+                    <!--begin::Col-->
                     <div class="col-md-12">
                         <label class="fs-6 form-label fw-bold text-dark">Address</label>
                         <input type="text" class="form-control" name="address" value="{{ request()->query('address') }}"

@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -106,7 +112,92 @@ class HomeController extends Controller
 
     public function order(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:100',
+            'country' => 'required|string|max:100',
+            'payment_method' => 'required|string',
+            'notes' => 'nullable|string',
+        ]);
 
-        return view('frontend.thankyou');
+        $cart = $request->input('cart', []);
+
+        if (!$cart || empty($cart)) {
+            return redirect()->back()->with('error', 'Cart is empty.');
+        }
+
+        $subTotal = 0;
+        $productsCount = 0;
+        foreach ($cart as $item) {
+            $subTotal += $item['price'] * $item['quantity'];
+            $productsCount += $item['quantity'];
+        }
+        $shippingFee = 10;
+        $total = $subTotal + $shippingFee;
+
+        DB::beginTransaction();
+
+        try {
+            $user = User::firstOrCreate(
+                ['email' => $request->email],
+                [
+                    'name' => $request->name,
+                    'phone' => $request->phone,
+                    'address' => $request->address,
+                    'city' => $request->city,
+                    'country' => $request->country,
+                    'password' => bcrypt('password'),
+                ]
+            );
+
+            $order = Order::create([
+                'client_id' => $user->id,
+                'order_number' => 'ORD-' . strtoupper(uniqid()),
+                'payment_method' => $request->payment_method,
+                'sub_total' => $subTotal,
+                'total' => $total,
+                'products_count' => $productsCount,
+                'notes' => $request->notes,
+            ]);
+
+            // Create order items
+            foreach ($cart as $item) {
+                $product = Product::findOrFail($item['id']);
+                OrderItem::create([
+                    'order_id' => $order->id,
+                    'product_id' => $product->id,
+                    'quantity' => $item['quantity'],
+                    'unit_price' => $item['price'],
+                    'total' => $item['price'] * $item['quantity'],
+                ]);
+            }
+
+            DB::commit();
+
+            $this->sendOrderEmails($order, $user);
+
+            setcookie('cart', '', time() - 3600, '/');
+
+            return redirect()->back()->with('success', 'Order placed successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Something went wrong: ' . $e->getMessage());
+        }
+    }
+
+    private function sendOrderEmails(Order $order, User $user)
+    {
+        Mail::send('emails.order-confirmation', ['order' => $order, 'user' => $user], function ($message) use ($user) {
+            $message->to($user->email)
+                ->subject('Order Confirmation');
+        });
+
+        Mail::send('emails.order-notification', ['order' => $order], function ($message) {
+            $message->to('joemazloum953@gmail.com')
+                ->subject('New Order Notification');
+        });
     }
 }

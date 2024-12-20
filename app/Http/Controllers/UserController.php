@@ -47,6 +47,8 @@ class UserController extends Controller
             'email' => trim($request->email),
             'phone' => trim($request->phone),
             'address' => trim($request->address),
+            'city' => trim($request->city),
+            'country' => trim($request->country),
             'password' => Hash::make($request->password),
         ]);
 
@@ -83,6 +85,8 @@ class UserController extends Controller
             'email' => trim($request->email),
             'phone' => trim($request->phone),
             'address' => trim($request->address),
+            'city' => trim($request->city),
+            'country' => trim($request->country),
         ]);
 
         if ($request->has('permissions')) {
