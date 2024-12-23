@@ -62,9 +62,10 @@ $translator->setTarget(app()->getLocale());
                         </div>
                         <div class="d-flex justify-content-between align-content-center">
                             <div class="fw-bold">{{__('landing.price')}}</div>
-                            <div><span class="fw-bold text-success">${{ number_format($product->price) }}</span>
-                                <span
-                                    class="fs-7 text-muted text-decoration-line-through">${{number_format($product->compare_price)
+                            <div><span class="fw-bold text-success">{{ $currency->code }}{{
+                                    number_format($product->price * $currency->rate) }}</span>
+                                <span class="fs-7 text-muted text-decoration-line-through">{{ $currency->code
+                                    }}{{number_format($product->compare_price * $currency->rate)
                                     }}</span>
                             </div>
                         </div>

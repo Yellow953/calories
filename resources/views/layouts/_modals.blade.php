@@ -44,9 +44,8 @@
                         <select id="currencySelect" name="currency"
                             class="form-select px-3 py-2 rounded-3 bg-secondary">
                             @foreach (App\Models\Currency::all() as $currency)
-                            <option class="bg-light" value="{{ $currency->code }}" {{ request()->
-                                cookie('currency','USD') == $currency->code ? 'selected' : '' }}>{{ $currency->name }} -
-                                {{ $currency->code }}</option>
+                            <option class="bg-light" value="{{ $currency->name }}" {{request()->cookie('currency','USD')
+                                ==$currency->name?'selected':''}}>{{ $currency->name }} - {{ $currency->code }}</option>
                             @endforeach
                         </select>
                     </div>

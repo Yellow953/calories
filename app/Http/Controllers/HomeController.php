@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Currency;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -53,8 +55,9 @@ class HomeController extends Controller
     public function product(Product $product)
     {
         $products = Product::select('id', 'name', 'image')->where('category_id', $product->category_id)->limit(8)->get();
+        $currency = Currency::where('name', Cookie::get('currency'))->first();
 
-        $data = compact('product', 'products');
+        $data = compact('product', 'products', 'currency');
         return view('frontend.product', $data);
     }
 
@@ -80,20 +83,20 @@ class HomeController extends Controller
 
     public function preferences(Request $request)
     {
-        $validated = $request->validate([
-            'language' => 'required|string|in:en,ar',
-            'currency' => 'required|string|in:usd,lbp',
+        $request->validate([
+            'language' => 'required|string',
+            'currency' => 'required|string',
         ]);
 
-        $language = $validated['language'];
-        $currency = $validated['currency'];
+        $language = $request->input('language', 'en');
+        $currency = $request->input('currency', 'USD');
 
         App::setLocale($language);
 
-        $cookieLang = cookie('language', $language, 60 * 24 * 30);
-        $cookieCurrency = cookie('currency', $currency, 60 * 24 * 30);
+        Cookie::queue('language', $language, 60 * 24 * 30);
+        Cookie::queue('currency', $currency, 60 * 24 * 30);
 
-        return redirect()->back()->withCookies([$cookieLang, $cookieCurrency]);
+        return redirect()->back();
     }
 
     public function custom_logout()

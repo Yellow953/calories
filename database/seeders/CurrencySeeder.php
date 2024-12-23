@@ -11,29 +11,29 @@ class CurrencySeeder extends Seeder
     {
         $currencies = [
             [
-                'name' => 'US Dollar',
+                'name' => 'USD',
                 'code' => '$',
                 'rate' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Lebanese Lira',
-                'code' => 'LBP',
+                'name' => 'LBP',
+                'code' => 'ل.ل.',
                 'rate' => 89500,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'UAE Dirham',
-                'code' => 'AED',
+                'name' => 'AED',
+                'code' => 'د.إ',
                 'rate' => 3.66,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Saudi Riyal',
-                'code' => 'SAR',
+                'name' => 'SAR',
+                'code' => 'ر. س',
                 'rate' => 3.76,
                 'created_at' => now(),
                 'updated_at' => now(),
