@@ -30,7 +30,7 @@
                                     <label for="phone" class="form-label text-secondary">{{ __('landing.phone') }} *
                                     </label>
                                     <input type="tel" id="phone" name="phone" class="form-control"
-                                        placeholder="+961 70 285 659" required>
+                                        placeholder="+961 81 893 865" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label text-secondary">{{ __('landing.email')

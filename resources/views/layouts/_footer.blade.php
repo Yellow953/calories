@@ -34,7 +34,7 @@
                         <ul class="list-unstyled text-center">
                             <a href="#" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-phone text-white"></i></li>
-                                <li class="text-white">+961 76 629 552</li>
+                                <li class="text-white">+961 81 893 865</li>
                             </a>
                         </ul>
                     </div>
