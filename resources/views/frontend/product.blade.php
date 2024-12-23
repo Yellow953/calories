@@ -130,7 +130,7 @@ $translator->setTarget(app()->getLocale());
             </div>
             <!-- End Carousel Wrapper -->
 
-            <div class="row mt-5">
+            {{-- <div class="row mt-5">
                 <h2 class="my-4 text-center text-primary">{{__('landing.faq')}}</h2>
 
                 <div class="accordion" id="accordionPanelsStayOpenExample1">
@@ -184,7 +184,7 @@ $translator->setTarget(app()->getLocale());
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

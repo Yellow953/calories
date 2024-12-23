@@ -43,10 +43,11 @@
                             class="form-label fw-medium text-muted">{{__('landing.currency')}}</label>
                         <select id="currencySelect" name="currency"
                             class="form-select px-3 py-2 rounded-3 bg-secondary">
-                            <option class="bg-light" value="usd" {{ request()->cookie('currency', 'usd') == 'usd' ?
-                                'selected' : '' }}>{{__('landing.usd')}} - {{__('landing.usdollar')}}</option>
-                            <option class="bg-light" value="lbp" {{ request()->cookie('currency', 'usd') == 'lbp' ?
-                                'selected' : '' }}>{{__('landing.lbp')}} - {{__('landing.lebaneselira')}}</option>
+                            @foreach (App\Models\Currency::all() as $currency)
+                            <option class="bg-light" value="{{ $currency->code }}" {{ request()->
+                                cookie('currency','USD') == $currency->code ? 'selected' : '' }}>{{ $currency->name }} -
+                                {{ $currency->code }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -134,7 +135,8 @@
             });
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
+    const cartButton = document.getElementById('cartButton');
+    cartButton.addEventListener('click', function () {
         // Get cart from cookies
         const cart = document.cookie
             .split('; ')

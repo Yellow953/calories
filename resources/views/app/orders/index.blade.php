@@ -54,7 +54,18 @@
                 <!--begin::Row-->
                 <div class="row g-8 mb-8">
                     <!--begin::Col-->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label class="fs-6 form-label fw-bold text-dark">Status</label>
+                        <select name="status" class="form-select">
+                            <option value=""></option>
+                            <option value="new" {{ request()->query('status')=='new' ? 'selected' : '' }}>New</option>
+                            <option value="completed" {{ request()->query('status')=='completed' ? 'selected' : ''
+                                }}>Completed</option>
+                        </select>
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-4">
                         <label class="fs-6 form-label fw-bold text-dark">Client</label>
                         <select name="client_id" class="form-select" data-control="select2"
                             data-placeholder="Select an option">
@@ -68,7 +79,7 @@
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="fs-6 form-label fw-bold text-dark">Notes</label>
                         <input type="text" class="form-control form-control-solid border" name="note"
                             value="{{ request()->query('notes') }}" placeholder="Enter Note..." />
@@ -101,7 +112,8 @@
                     <thead>
                         <tr class="text-center">
                             <th class="col-4 p-3">Order</th>
-                            <th class="col-4 p-3">Amount</th>
+                            <th class="col-2 p-3">Status</th>
+                            <th class="col-2 p-3">Amount</th>
                             <th class="col-2 p-3">Products</th>
                             <th class="col-2 p-3">Actions</th>
                         </tr>
@@ -113,6 +125,9 @@
                         <tr>
                             <td class="text-center">
                                 <span class="text-primary fw-bold"># {{ $order->order_number }}</span>
+                            </td>
+                            <td class="text-center">
+                                <span class="badge">{{ $order->status }}</span>
                             </td>
                             <td>
                                 <div class="text-center">
@@ -127,6 +142,14 @@
                                 {{ $order->products_count }}
                             </td>
                             <td class="d-flex justify-content-end border-0">
+                                @can('orders.update')
+                                @if ($order->status != 'completed')
+                                <a href="{{ route('orders.complete', $order->id) }}"
+                                    class="btn btn-icon btn-success btn-sm me-1">
+                                    <i class="bi bi-check-lg"></i>
+                                </a>
+                                @endif
+                                @endcan
                                 @can('orders.read')
                                 <a href="{{ route('orders.show', $order->id) }}"
                                     class="btn btn-icon btn-primary btn-sm me-1">
@@ -144,7 +167,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <th colspan="4">
+                            <th colspan="5">
                                 <div class="text-center">No Orders Yet ...</div>
                             </th>
                         </tr>
@@ -154,8 +177,9 @@
 
                     <tfoot>
                         <tr>
-                            <th colspan="4">
-                                {{ $orders->appends(['order_number' => request()->query('order_number'), 'client_id' =>
+                            <th colspan="5">
+                                {{ $orders->appends(['order_number' => request()->query('order_number'), 'status' =>
+                                request()->query('status'), 'client_id' =>
                                 request()->query('client_id'), 'note' =>
                                 request()->query('note')])->links() }}
                             </th>

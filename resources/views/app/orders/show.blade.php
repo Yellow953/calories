@@ -134,6 +134,10 @@
                                                 <span class="fs-5">#{{ $order->order_number }}</span>
                                             </div>
                                             <div class="flex-root d-flex flex-column mt-4">
+                                                <span class="text-muted">Status</span>
+                                                <span class="fs-5">{{ $order->status }}</span>
+                                            </div>
+                                            <div class="flex-root d-flex flex-column mt-4">
                                                 <span class="text-muted">Date</span>
                                                 <span class="fs-5">{{ $order->created_at }}</span>
                                             </div>

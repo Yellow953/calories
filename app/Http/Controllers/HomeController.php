@@ -161,6 +161,7 @@ class HomeController extends Controller
                 'total' => $total,
                 'products_count' => $productsCount,
                 'notes' => $request->notes,
+                'status' => 'new',
             ]);
 
             // Create order items

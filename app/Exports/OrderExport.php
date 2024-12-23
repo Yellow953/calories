@@ -13,6 +13,7 @@ class OrderExport implements FromCollection, WithHeadings
         return  Order::all()->map(function ($order) {
             return [
                 'client' => $order->client->name,
+                'status' => $order->status,
                 'payment_method' => $order->payment_method,
                 'order_number' => $order->order_number,
                 'sub_total' => $order->sub_total,
@@ -28,6 +29,7 @@ class OrderExport implements FromCollection, WithHeadings
     {
         return [
             'Client',
+            'Status',
             'Payment Method',
             'Order Number',
             'Sub Total',

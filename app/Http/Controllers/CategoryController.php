@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\CategoriesExport;
+use App\Exports\CategoryExport;
 use App\Models\Category;
 use App\Models\Log;
 use Illuminate\Http\Request;
@@ -116,6 +116,6 @@ class CategoryController extends Controller
 
     public function export()
     {
-        return Excel::download(new CategoriesExport, 'categories.xlsx');
+        return Excel::download(new CategoryExport, 'categories.xlsx');
     }
 }

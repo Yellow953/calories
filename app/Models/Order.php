@@ -41,6 +41,10 @@ class Order extends Model
             $notes = request('notes');
             $q->where('notes', 'LIKE', "%{$notes}%");
         }
+        if (request('status')) {
+            $status = request('status');
+            $q->where('status', $status);
+        }
 
         return $q;
     }

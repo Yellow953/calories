@@ -1,4 +1,4 @@
-<nav class="navbar {{Route::is('about') ? 'about-navbar': ''}} navbar-expand-lg fixed-top">
+<nav class="navbar {{ Route::is('about') ? 'about-navbar': '' }} navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{Route('home')}}">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Calories Logo" class="logo rounded-white" />
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
+                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button" id="cartButton"
                         aria-controls="offcanvasCart">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>

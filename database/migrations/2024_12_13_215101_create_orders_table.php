@@ -17,6 +17,7 @@ return new class extends Migration
             $table->double('total')->unsigned()->default(0);
             $table->unsignedInteger('products_count');
             $table->text('notes')->nullable();
+            $table->string('status')->default('new');
             $table->timestamps();
             $table->softDeletes();
 
