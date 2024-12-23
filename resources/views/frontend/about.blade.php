@@ -24,6 +24,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3324.732174865301!2d35.37599189778568!3d33.56033427143957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDMzJzM3LjQiTiAzNcKwMjInNDIuNyJF!5e0!3m2!1sen!2slb!4v1734961388621!5m2!1sen!2slb"
+                    height="450" style="border:0; width: 100%;" allowfullscreen="true" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>

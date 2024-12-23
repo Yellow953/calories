@@ -11,65 +11,77 @@
             <form class="form" action="{{ route('order') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-secondary text-center mb-4">{{ __('landing.checkout') }}</h2>
+                    </div>
                     <!-- Left Column -->
                     <div class="col-md-7">
                         <div class="card p-4">
-                            <h3 class="text-secondary text-center mb-4">{{ __('landing.checkout') }}</h3>
-
-                            <!-- Contact Information -->
-                            <div class="mb-4">
-                                <label for="email" class="form-label">{{ __('landing.email') }}</label>
-                                <input type="email" name="email" class="form-control" placeholder="you@example.com"
-                                    required>
-                            </div>
-
                             <!-- Shipping Information -->
                             <div class="mb-4">
-                                <h4 class="text-secondary mb-3">{{ __('landing.shipping_address') }}</h4>
+                                <h4 class="text-primary text-center mb-3">{{ __('landing.shipping_address') }}</h4>
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">{{ __('landing.name') }}</label>
+                                    <label for="name" class="form-label text-secondary">{{ __('landing.name') }} *
+                                    </label>
                                     <input type="text" id="name" name="name" class="form-control" placeholder="John Doe"
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="phone" class="form-label">{{ __('landing.phone') }}</label>
+                                    <label for="phone" class="form-label text-secondary">{{ __('landing.phone') }} *
+                                    </label>
                                     <input type="tel" id="phone" name="phone" class="form-control"
                                         placeholder="+961 70 285 659" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="address" class="form-label">{{ __('landing.address') }}</label>
+                                    <label for="email" class="form-label text-secondary">{{ __('landing.email')
+                                        }}</label>
+                                    <input type="email" name="email" class="form-control" placeholder="you@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="country" class="form-label text-secondary">{{ __('landing.country') }} *
+                                    </label>
+                                    <select name="country" id="country" class="form-select" required>
+                                        @foreach ($countries as $country)
+                                        <option value="{{ $country }}" {{ $country=="Lebanon" ? 'selected' : '' }}>{{
+                                            $country }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address" class="form-label text-secondary">{{ __('landing.address') }} *
+                                    </label>
                                     <input type="text" id="address" name="address" class="form-control"
                                         placeholder="123 Main St" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="city" class="form-label">{{ __('landing.city') }}</label>
+                                    <label for="city" class="form-label text-secondary">{{ __('landing.city') }} *
+                                    </label>
                                     <input type="text" id="city" name="city" class="form-control" placeholder="Beirut"
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="country" class="form-label">{{ __('landing.country') }}</label>
-                                    <input type="text" id="country" name="country" value="Lebanon" class="form-control"
-                                        placeholder="Lebanon" required>
+                                    <label for="zip" class="form-label text-secondary">{{ __('landing.zip') }}</label>
+                                    <input type="number" min="0" step="1" id="zip" name="zip" class="form-control"
+                                        placeholder="1234">
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <h4 class="text-primary mb-3">{{ __('landing.payment_info') }}</h4>
+                                <h4 class="text-primary text-center mb-3">{{ __('landing.payment_info') }}</h4>
 
                                 <div class="mb-3">
-                                    <label for="method" class="form-label">{{ __('landing.payment_method') }}</label>
+                                    <label for="method" class="form-label text-secondary">{{
+                                        __('landing.payment_method') }}</label>
                                     <select id="method" name="payment_method" class="form-select" required>
-                                        <option value="cash on delivery" selected>{{ __('landing.cash_on_delivery') }}
-                                        </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <h4 class="text-primary mb-3">{{ __('landing.additional_info') }}</h4>
+                                <h4 class="text-primary text-center mb-3">{{ __('landing.additional_info') }}</h4>
 
                                 <div class="mb-3">
-                                    <label for="notes" class="form-label">{{ __('landing.notes') }} ({{
+                                    <label for="notes" class="form-label text-secondary">{{ __('landing.notes') }} ({{
                                         __('landing.optional') }})</label>
                                     <textarea type="text" id="notes" name="notes" class="form-control" rows="3"
                                         placeholder="Notes about your order..."></textarea>
@@ -81,7 +93,7 @@
                     <!-- Right Column -->
                     <div class="col-md-5">
                         <div class="card p-4 border-primary">
-                            <h4 class="text-secondary text-center mb-4">{{ __('landing.order_summary') }}</h4>
+                            <h4 class="text-primary text-center mb-4">{{ __('landing.order_summary') }}</h4>
                             <div class="summary-card" id="cart-items-container">
                                 <!-- Cart Items will be populated here dynamically -->
                             </div>
@@ -151,9 +163,52 @@
             cartItemsContainer.appendChild(cartItem);
         });
 
-        // Update price breakdown
         subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
         totalElement.textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const countrySelect = document.getElementById('country');
+        const paymentMethodSelect = document.getElementById('method');
+
+        const updatePaymentMethods = (country) => {
+            paymentMethodSelect.innerHTML = '';
+
+            if (country === 'Lebanon') {
+                const codOption = document.createElement('option');
+                codOption.value = 'cash on delivery';
+                codOption.textContent = '{{ __('landing.cash_on_delivery') }}';
+                paymentMethodSelect.appendChild(codOption);
+
+                const cardOption = document.createElement('option');
+                cardOption.value = 'card';
+                cardOption.textContent = '{{ __('landing.card') }}';
+                paymentMethodSelect.appendChild(cardOption);
+
+                const whishOption = document.createElement('option');
+                whishOption.value = 'whish';
+                whishOption.textContent = '{{ __('landing.whish') }}';
+                paymentMethodSelect.appendChild(whishOption);
+            } else {
+                const cardOption = document.createElement('option');
+                cardOption.value = 'card';
+                cardOption.textContent = '{{ __('landing.card') }}';
+                paymentMethodSelect.appendChild(cardOption);
+
+                const whishOption = document.createElement('option');
+                whishOption.value = 'whish';
+                whishOption.textContent = '{{ __('landing.whish') }}';
+                paymentMethodSelect.appendChild(whishOption);
+            }
+        };
+
+        countrySelect.addEventListener('change', function () {
+            const selectedCountry = countrySelect.value;
+            updatePaymentMethods(selectedCountry);
+        });
+
+        updatePaymentMethods(countrySelect.value);
+    });
+
 </script>
 @endsection

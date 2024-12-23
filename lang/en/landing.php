@@ -82,4 +82,7 @@ return [
     'quantity' => 'Quantity',
     'aboutus' => 'About Us',
     'remove' => 'Remove',
+    'zip' => 'ZIP Code',
+    'card' => 'Debit/Credit Card',
+    'whish' => 'WHISH MONEY',
 ];

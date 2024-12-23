@@ -127,7 +127,8 @@
                                 <span class="text-primary fw-bold"># {{ $order->order_number }}</span>
                             </td>
                             <td class="text-center">
-                                <span class="badge">{{ $order->status }}</span>
+                                <span class="badge badge-{{ $order->status == 'completed' ? 'success' : 'primary' }}">{{
+                                    ucwords($order->status) }}</span>
                             </td>
                             <td>
                                 <div class="text-center">

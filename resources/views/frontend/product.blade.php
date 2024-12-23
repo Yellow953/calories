@@ -5,8 +5,12 @@
 @php
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
+$translate = app()->getLocale() != 'en';
+
+if($translate){
 $translator = new GoogleTranslate();
 $translator->setTarget(app()->getLocale());
+}
 @endphp
 
 @section('content')
@@ -48,11 +52,12 @@ $translator->setTarget(app()->getLocale());
             <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2 text-primary">{{ $translator->translate($product->name) }}</h1>
+                        <h1 class="h2 text-primary">{{ $translate ? $translator->translate($product->name) :
+                            $product->name }}</h1>
                         <div class="my-3">
                             <div class="d-flex justify-content-between my-2">
-                                <span class="fw-bold">{{__('landing.category')}}:</span> {{
-                                $translator->translate($product->category->name) }}
+                                <span class="fw-bold">{{__('landing.category')}}:</span> {{ $translate ?
+                                $translator->translate($product->category->name) : $product->category->name }}
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-content-center">
@@ -89,7 +94,8 @@ $translator->setTarget(app()->getLocale());
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    {{ $translator->translate($product->description) }}
+                                    {{ $translate ? $translator->translate($product->description) :
+                                    $product->description }}
                                 </div>
                             </div>
                         </div>
@@ -116,8 +122,8 @@ $translator->setTarget(app()->getLocale());
                                 <a href="{{ route('product', $pr->name) }}" class="text-decoration-none">
                                     <img class="card-img border img-fluid" src="{{ asset($pr->image) }}"
                                         alt="{{ $pr->name }}">
-                                    <h5 class="category-title text-center text-primary mt-2">{{
-                                        $translator->translate($pr->name)
+                                    <h5 class="category-title text-center text-primary mt-2">{{ $translate ?
+                                        $translator->translate($pr->name) : $pr->name
                                         }}</h5>
                                 </a>
                             </div>

@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function () {
         // Orders
         Route::prefix('orders')->group(function () {
             Route::get('/export', [OrderController::class, 'export'])->name('orders.export');
-            Route::get('/complete', [OrderController::class, 'complete'])->name('orders.complete');
+            Route::get('/{order}/complete', [OrderController::class, 'complete'])->name('orders.complete');
             Route::get('/{order}/destroy', [OrderController::class, 'destroy'])->name('orders.destroy');
             Route::get('/{order}/show', [OrderController::class, 'show'])->name('orders.show');
             Route::get('/', [OrderController::class, 'index'])->name('orders');

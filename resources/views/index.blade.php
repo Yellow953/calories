@@ -5,8 +5,12 @@
 @php
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
+$translate = app()->getLocale() != 'en';
+
+if($translate){
 $translator = new GoogleTranslate();
 $translator->setTarget(app()->getLocale());
+}
 @endphp
 
 @section('content')
@@ -38,7 +42,8 @@ $translator->setTarget(app()->getLocale());
                             <img src="{{ asset($category->image) }}" class="img-fluid category-img">
                         </div>
                         <div class="d-flex flex-column category-title">
-                            <h5 class="text-center mt-2">{{ $translator->translate($category->name) }}</h5>
+                            <h5 class="text-center mt-2">{{ $translate ? $translator->translate($category->name) :
+                                $category->name }}</h5>
                         </div>
                     </a>
                 </div>
@@ -100,8 +105,8 @@ $translator->setTarget(app()->getLocale());
                             <img src="{{ asset($product->image) }}" class="img-fluid category-img">
                         </a>
                     </div>
-                    <h5 class="category-title text-center text-primary mt-2">{{ $translator->translate($product->name)
-                        }}</h5>
+                    <h5 class="category-title text-center text-primary mt-2">{{ $translate ?
+                        $translator->translate($product->name) : $product->name }}</h5>
                 </div>
                 @endforeach
             </div>

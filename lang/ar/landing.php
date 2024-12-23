@@ -82,4 +82,7 @@ return [
     'quantity' => 'كمية',
     'aboutus' => 'معلومات عنا',
     'remove' => 'يزيل',
+    'zip' => 'الرمز البريدي',
+    'card' => 'بطاقة الائتمان/الخصم',
+    'whish' => 'WHISH MONEY',
 ];

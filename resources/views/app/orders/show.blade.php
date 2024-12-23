@@ -45,7 +45,7 @@
                             <!--begin::Title-->
                             <h1
                                 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-                                Order #{{ $order->order_number }}</h1>
+                                Order #{{ $order->id }}</h1>
                             <!--end::Title-->
                             <!--begin::Breadcrumb-->
                             <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -101,7 +101,8 @@
                                     <!-- begin::Header-->
                                     <div class="d-flex justify-content-between flex-column flex-sm-row mb-19">
                                         <div>
-                                            <h4 class="fw-bolder text-gray-800 fs-2qx pe-5 pb-7">Order</h4>
+                                            <h4 class="fw-bolder text-gray-800 fs-2qx pe-5 pb-7">Order #{{ $order->id }}
+                                            </h4>
 
                                             <div class="flex-root d-flex flex-column mt-4">
                                                 <span class="text-muted">Client</span>
@@ -129,15 +130,15 @@
                                                 <div>{{ $business->address }}</div> --}}
                                             </div>
                                             <!--end::Text-->
-                                            <div class="flex-root d-flex flex-column mt-4">
+                                            <div class="flex-root d-flex flex-column mt-1">
                                                 <span class="text-muted">Order Number</span>
                                                 <span class="fs-5">#{{ $order->order_number }}</span>
                                             </div>
-                                            <div class="flex-root d-flex flex-column mt-4">
+                                            <div class="flex-root d-flex flex-column mt-1">
                                                 <span class="text-muted">Status</span>
-                                                <span class="fs-5">{{ $order->status }}</span>
+                                                <span class="fs-5">{{ ucwords($order->status) }}</span>
                                             </div>
-                                            <div class="flex-root d-flex flex-column mt-4">
+                                            <div class="flex-root d-flex flex-column mt-1">
                                                 <span class="text-muted">Date</span>
                                                 <span class="fs-5">{{ $order->created_at }}</span>
                                             </div>
