@@ -14,17 +14,17 @@ $translator->setTarget(app()->getLocale());
 @endphp
 
 @section('content')
-<div class="hero">
-    <div class="home-overlay">
-        <div class="row h-100vh w-100">
-            <div class="col-md-6"></div>
-            <div class="col-md-6">
-                <div class="d-flex flex-column align-items-center justify-content-center h-100">
-                    <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid hero-logo">
-                    <h1 class="fw-bold text-end hero-title">{{__('landing.healthy_living')}}
-                        <br>{{__('landing.starts_here')}}
-                    </h1>
-                </div>
+<div class="slider">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <img src="{{ asset('assets/images/hero.png') }}" class="d-block hero-img" alt="Hero Image">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ asset('assets/images/hero-2.png') }}" class="d-block hero-img" alt="Hero Image 2">
+            </div>
+            <div class="carousel-item active">
+                <img src="{{ asset('assets/images/hero-3.png') }}" class="d-block hero-img" alt="Hero Image 3">
             </div>
         </div>
     </div>

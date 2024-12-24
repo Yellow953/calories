@@ -1,4 +1,4 @@
-<nav class="navbar {{ Route::is('about') ? 'about-navbar': '' }} navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg mt-nav fixed-top">
     <div class="container">
         <a class="navbar-brand" href="{{Route('home')}}">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Calories Logo" class="logo rounded-white" />

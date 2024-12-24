@@ -39,6 +39,7 @@
 </head>
 
 <body>
+    @include('layouts._announcement')
     @include('layouts._header')
 
     <div class="mt-5 mt-md-2">
@@ -55,6 +56,7 @@
         </a>
     </div>
 
+    <script src="{{asset('assets/js/custom/bootstrap-carousel.js')}}"></script>
     <script src="{{ asset('assets/js/frontend.js') }}"></script>
 </body>
 
