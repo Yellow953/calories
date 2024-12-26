@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="text-center">
-                    <p>Filler content like Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <p>{{ __('landing.announcement') }}</p>
                 </div>
             </div>
         </div>

@@ -21,18 +21,20 @@
                         </ul>
                     </div>
                     <div class="col-6">
-                        <ul class="list-unstyled text-center">
-                            <li style=" font-size: 2rem;"><i class="fa fa-clock text-white"></i>
-                            </li>
-                            <li class="text-white">{{__('landing.monday')}} - {{__('landing.friday')}}</li>
-                            <li class="text-white">08:00 - 20:00</li>
+                        <ul class="list-unstyled text-center y-on-hover">
+                            <a href="#" class="text-decoration-none">
+                                <li style=" font-size: 2rem;"><i class="fa fa-clock text-white"></i>
+                                </li>
+                                <li class="text-white">{{__('landing.monday')}} - {{__('landing.friday')}}</li>
+                                <li class="text-white">08:00 - 20:00</li>
+                            </a>
                         </ul>
                     </div>
                 </div>
                 <div class="row ms-0 me-0">
                     <div class="col-6">
                         <ul class="list-unstyled text-center y-on-hover">
-                            <a href="#" class="text-decoration-none">
+                            <a href="tel:+96181893865" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-phone text-white"></i></li>
                                 <li class="text-white">+961 81 893 865</li>
                             </a>
@@ -40,7 +42,7 @@
                     </div>
                     <div class="col-6">
                         <ul class="list-unstyled text-center y-on-hover">
-                            <a href="#" class="text-decoration-none">
+                            <a href="mailto:fatimakhansa97@gmail.com" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-envelope text-white"></i></li>
                                 <li class="text-white">fatimakhansa97@gmail.com</li>
                             </a>

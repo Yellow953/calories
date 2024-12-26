@@ -24,9 +24,8 @@
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-clock text-secondary"></i></h5>
                         <p>
-                            {{__('landing.monday')}} - {{__('landing.friday')}}: 9:00 AM - 6:00 PM<br />
-                            {{__('landing.saturday')}}: 10:00 AM - 4:00 PM<br />
-                            {{__('landing.sunday')}}: Closed
+                            {{__('landing.monday')}} - {{__('landing.friday')}}: 8:00 AM - 5:00 PM <br />
+                            {{__('landing.saturday')}} - {{__('landing.sunday')}}: 9:00 AM - 4:00 PM <br />
                         </p>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
@@ -40,10 +39,13 @@
                     <div class="d-flex mt-3 justify-content-center">
                         <div class="social-icons animate-on-scroll slide-up text-center">
                             <h3 class="fw-bold mb-3 text-secondary">{{__('landing.follow_us')}}</h3>
-                            <a href="#" class="social-icon text-decoration-none text-secondary me-2"><i
-                                    class="fa-brands fa-facebook fs-3"></i></a>
-                            <a href="#" class="social-icon text-decoration-none text-secondary"><i
-                                    class="fa-brands fa-instagram fs-3"></i></a>
+
+                            <a href="https://www.tiktok.com/@caloriesbyfatima?_t=8sNLacaOJpi&_r=1" target="blank"
+                                class="social-icon text-decoration-none text-secondary"><i
+                                    class="fa-brands fa-tiktok fs-4 mx-1"></i></a>
+                            <a href="https://www.instagram.com/calories_by_fatima" target="blank"
+                                class="social-icon text-decoration-none text-secondary"><i
+                                    class="fa-brands fa-instagram fs-3 mx-1"></i></a>
                         </div>
                     </div>
                 </div>

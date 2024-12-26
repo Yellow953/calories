@@ -9,7 +9,8 @@
             <div class="col-md-6">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
                     <h1 class="about-title fw-bold text-center hero-title">{{ __('landing.aboutus') }}</h1>
-                    <p class="fs-4 hero-title fw-semibold text-center">Healthy Living <br> Starts Here!</p>
+                    <p class="fs-4 hero-title fw-semibold text-center">{{ __('landing.healthy_living') }} <br> {{
+                        __('landing.starts_here') }}</p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -26,14 +27,14 @@
             <img src="{{ asset('assets/images/about-1.png') }}" class="img-fluid about-img">
         </div>
         <div class="col-md-6">
-            <h2 class="hero-title fw-bold text-center mb-4">About Us</h2>
-            <p class="fs-5 text-center">At Calories, we believe that healthy eating is not just a choice, but a lifestyle. Nestled in the heart of Lebanon, our store is dedicated to providing fresh, wholesome, and nutritious food options that support your well-being and help you live your healthiest life.</p>
+            <h2 class="hero-title fw-bold text-center mb-4">{{ __('landing.aboutus') }}</h2>
+            <p class="fs-5 text-center">{{ __('landing.about_text') }}</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <h2 class="hero-title fw-bold text-center mb-4">Our Mission</h2>
-            <p class="fs-5 text-center">Our mission is to make healthy eating easy and accessible to everyone, whether you're looking to fuel your body with natural, organic ingredients, or simply explore a more balanced way of living. From nutrient-packed fruits and vegetables to gluten-free snacks, plant-based products, and wholesome grains, we carefully curate our selection to meet the diverse needs of our community.</p>
+            <h2 class="hero-title fw-bold text-center mb-4">{{ __('landing.our_mission') }}</h2>
+            <p class="fs-5 text-center">{{ __('landing.our_mission_text') }}</p>
         </div>
         <div class="col-md-6">
             <img src="{{ asset('assets/images/about-2.png') }}" class="img-fluid about-img">

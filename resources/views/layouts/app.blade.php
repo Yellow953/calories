@@ -38,7 +38,7 @@
     <title>@yield('title') - {{__('landing.calories')}}</title>
 </head>
 
-<body>
+<body class="custom_scroller">
     @include('layouts._announcement')
     @include('layouts._header')
 

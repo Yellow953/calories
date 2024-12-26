@@ -85,4 +85,11 @@ return [
     'zip' => 'ZIP Code',
     'card' => 'Debit/Credit Card',
     'whish' => 'WHISH MONEY',
+    'announcement' => '+961 81 893 865 | fatimakhansa97@gmail.com',
+    'join_our_newsletter' => 'Join Our Newsletter',
+    'newsletter_text' => 'Join our e-mail subscription now to get the latest updates about upcoming promotions, discounts, and new products!',
+    'subscribe' => 'Subscribe',
+    'about_text' => 'At Calories, we believe that healthy eating is not just a choice, but a lifestyle. Nestled in the heart of Lebanon, our store is dedicated to providing fresh, wholesome, and nutritious food options that support your well-being and help you live your healthiest life.',
+    'our_mission' => 'Our Mission',
+    'our_mission_text' => "Our mission is to make healthy eating easy and accessible to everyone, whether you're looking to fuel your body with natural, organic ingredients, or simply explore a more balanced way of living. From nutrient-packed fruits and vegetables to gluten-free snacks, plant-based products, and wholesome grains, we carefully curate our selection to meet the diverse needs of our community."
 ];

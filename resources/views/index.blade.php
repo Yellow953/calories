@@ -42,7 +42,7 @@ $translator->setTarget(app()->getLocale());
                     </div>
                     <div class="d-flex flex-column category-title">
                         <h5 class="text-center mt-2">{{ $translate ? $translator->translate($category->name) :
-                                $category->name }}</h5>
+                            $category->name }}</h5>
                     </div>
                 </a>
             </div>
@@ -99,14 +99,15 @@ $translator->setTarget(app()->getLocale());
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6 text-start d-flex flex-column justify-content-center">
-                            <h2 class="hero-title mb-3">Join Our Newsletter</h2>
-                            <p class="card-text mb-3">Join our e-mail subscription now to get the latest updates about upcoming promotions, discounts, and new products!</p>
+                            <h2 class="hero-title mb-3">{{ __('landing.join_our_newsletter') }}</h2>
+                            <p class="card-text mb-3">{{ __('landing.newsletter_text') }}</p>
                             <form action="#" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Enter Your Email" required>
+                                    <input type="email" name="email" class="form-control" placeholder="Enter Your Email"
+                                        required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Subscribe</button>
+                                <button type="submit" class="btn btn-primary">{{ __('landing.subscribe') }}</button>
                             </form>
                         </div>
                         <div class="col-md-6">
@@ -128,7 +129,7 @@ $translator->setTarget(app()->getLocale());
                     </a>
                 </div>
                 <h5 class="category-title text-center text-primary mt-2">{{ $translate ?
-                        $translator->translate($product->name) : $product->name }}</h5>
+                    $translator->translate($product->name) : $product->name }}</h5>
             </div>
             @endforeach
         </div>
