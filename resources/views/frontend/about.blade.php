@@ -5,15 +5,15 @@
 @section('content')
 <div>
     <div class="overlay">
-        <div class="row h-100vh w-100">
-            <div class="col-md-6">
+        <div class="row h-50vh h-md-100vh w-100">
+            <div class="col-lg-6">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100">
                     <h1 class="about-title fw-bold text-center hero-title">{{ __('landing.aboutus') }}</h1>
                     <p class="fs-4 hero-title fw-semibold text-center">{{ __('landing.healthy_living') }} <br> {{
                         __('landing.starts_here') }}</p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 m-hidden">
                 <div class="d-flex flex-column align-items-center justify-content-center h-100 mt-4">
                     <img src="{{ asset('assets/images/about-header.png') }}" class="img-fluid about-header">
                 </div>

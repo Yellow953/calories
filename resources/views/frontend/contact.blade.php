@@ -3,13 +3,14 @@
 @section('title', __('landing.contact'))
 
 @section('content')
-<section class="pb-5">
-    <div class="container">
+<section class="pb-5 mt-5">
+    <div class="container mt-3">
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="text-secondary mb-3 fw-bold">{{__('landing.contact_msg1')}}</h1>
                 <h5>{{__('landing.contact_msg2')}}<br>
-                    {{__('landing.contact_msg3')}}</h5>
+                    {{__('landing.contact_msg3')}}
+                </h5>
             </div>
         </div>
         <div class="row mt-5">
@@ -53,7 +54,8 @@
             <div class="col-md-6">
                 <div class="card rounded p-5 text-center">
                     <h2 class="mb-4 animate-on-scroll slide-right text-primary fw-bold">
-                        {{__('landing.send_us_a_message')}}</h2>
+                        {{__('landing.send_us_a_message')}}
+                    </h2>
                     <form class="form" action="{{ route('contact.send') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 

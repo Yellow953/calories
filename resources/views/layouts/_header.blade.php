@@ -3,6 +3,26 @@
         <a class="navbar-brand" href="{{Route('home')}}">
             <img src="{{ asset('assets/images/logo.png') }}" alt="Calories Logo" class="logo rounded-white" />
         </a>
+        <ul class="navbar-nav ms-auto tab-display me-4">
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fa fa-search"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
+                    aria-controls="offcanvasCart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+        </ul>
         <ul class="navbar-nav ms-auto desktop-hidden">
             <li class="nav-item">
                 <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#searchModal">
