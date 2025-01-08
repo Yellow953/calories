@@ -51,7 +51,7 @@
     @include('layouts._modals')
 
     <div id="whatsapp">
-        <a href="https://web.whatsapp.com/send?autoload=1&app_absent=0&phone=96181893865" target="_blank">
+        <a href="https://web.whatsapp.com/send?autoload=1&app_absent=0&phone=96170833158" target="_blank">
             <img src="{{ asset('assets/images/whatsapp.png') }}" alt="whatsapp logo" class="img-fluid">
         </a>
     </div>

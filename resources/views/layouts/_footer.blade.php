@@ -35,19 +35,27 @@
                     </div>
                 </div>
                 <div class="row ms-0 me-0">
-                    <div class="col-6">
+                    <div class="col-4">
                         <ul class="list-unstyled text-center y-on-hover">
-                            <a href="tel:+96181893865" class="text-decoration-none">
+                            <a href="tel:+96170833158" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-phone text-white"></i></li>
-                                <li class="text-white">+961 81 893 865</li>
+                                <li class="text-white">+961 70 833 158</li>
                             </a>
                         </ul>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <ul class="list-unstyled text-center y-on-hover">
                             <a href="mailto:fatimakhansa97@gmail.com" class="text-decoration-none">
                                 <li style=" font-size: 2rem;"><i class="fa fa-envelope text-white"></i></li>
                                 <li class="text-white">Email Us!</li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="col-4">
+                        <ul class="list-unstyled text-center y-on-hover">
+                            <a href="tel:+96176629552" class="text-decoration-none">
+                                <li style=" font-size: 2rem;"><i class="fa fa-phone text-white"></i></li>
+                                <li class="text-white">+961 76 629 552</li>
                             </a>
                         </ul>
                     </div>

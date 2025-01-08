@@ -41,7 +41,7 @@ $translator->setTarget(app()->getLocale());
                     @foreach($products as $product)
                     <div class="col-6 col-md-3 mb-3">
                         <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
-                            <div class="card item-card">
+                            <div class="card item-card overflow-hidden shadow-sm">
                                 <img src="{{ $product->image }}" class="img-fluid product-img">
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{ $translate ?

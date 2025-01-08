@@ -31,7 +31,7 @@
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-phone text-secondary"></i></h5>
-                        <p>+961 81 893 865</p>
+                        <p>+961 70 833 158</p>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
                         <h5><i class="fa fa-envelope text-secondary"></i></h5>

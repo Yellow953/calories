@@ -30,7 +30,7 @@
                                     <label for="phone" class="form-label text-secondary">{{ __('landing.phone') }} *
                                     </label>
                                     <input type="tel" id="phone" name="phone" class="form-control"
-                                        placeholder="+961 81 893 865" required>
+                                        placeholder="+961 70 833 158" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label text-secondary">{{ __('landing.email')
@@ -124,7 +124,32 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Get cart from cookies
+        // Shipping costs per country (per 1kg)
+        const shippingCosts = {
+            Qatar: 60,
+            Kuwait: 60,
+            Saudi: 60,
+            Bahrain: 60,
+            Egypt: 30,
+            Jordan: 30,
+            Turkey: 30,
+            UAE: 50,
+            Sweden: 60,
+            Algeria: 70,
+            London: 70,
+            Libya: 45,
+            France: 60,
+            Germany: 70,
+            Tunisia: 45,
+            Iraq: 50,
+            Oman: 45,
+            Lebanon: 4,
+            Zambia: 80,
+            Gambia: 80,
+            USA: 60,
+            Others: 80,
+        };
+
         const cart = document.cookie
             .split('; ')
             .find(row => row.startsWith('cart='))
@@ -133,14 +158,16 @@
 
         const cartItemsContainer = document.getElementById('cart-items-container');
         const subtotalElement = document.getElementById('subtotal-price');
+        const shippingElement = document.getElementById('shipping-price');
         const totalElement = document.getElementById('total-price');
-        const shippingCost = 10;
+        const countrySelect = document.getElementById('country');
 
         let subtotal = 0;
-        let count = 0;
+        let totalQuantity = 0;
 
         cartData.forEach(item => {
             subtotal += item.price * item.quantity;
+            totalQuantity += item.quantity;
 
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
@@ -152,24 +179,55 @@
                     <small>{{ __('landing.quantity') }}: ${item.quantity}</small>
                 </div>
                 <p class="ms-auto">$${(item.price * item.quantity).toFixed(2)}</p>
-                <input type="hidden" name="cart[${count}][id]" value="${item.id}">
-                <input type="hidden" name="cart[${count}][name]" value="${item.name}">
-                <input type="hidden" name="cart[${count}][image]" value="${item.image}">
-                <input type="hidden" name="cart[${count}][quantity]" value="${item.quantity}">
-                <input type="hidden" name="cart[${count}][price]" value="${item.price}">
             `;
-            count++;
-
             cartItemsContainer.appendChild(cartItem);
         });
 
+        const calculateShipping = () => {
+            const selectedCountry = countrySelect.value;
+            const countryShippingRate = shippingCosts[selectedCountry] || shippingCosts.Others;
+
+            const weightInKg = Math.ceil(totalQuantity / 10);
+            return countryShippingRate * weightInKg;
+        };
+
+        const updatePrices = () => {
+            const shippingCost = calculateShipping();
+            shippingElement.textContent = `$${shippingCost.toFixed(2)}`;
+            totalElement.textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
+        };
+
+        countrySelect.addEventListener('change', updatePrices);
+
         subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-        totalElement.textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
+        updatePrices();
     });
 
     document.addEventListener('DOMContentLoaded', function () {
         const countrySelect = document.getElementById('country');
         const paymentMethodSelect = document.getElementById('method');
+        const bankInfoSection = document.createElement('div');
+        const whishInfoSection = document.createElement('div');
+
+        bankInfoSection.innerHTML = `
+            <h5>{{ __('landing.bank_info') }}</h5>
+            <p>{{ __('landing.bank_name') }}: Bank ABC</p>
+            <p>{{ __('landing.account_number') }}: 123456789</p>
+            <p>{{ __('landing.swift_code') }}: ABCDEF123</p>
+        `;
+        bankInfoSection.classList.add('bank_section');
+        bankInfoSection.style.display = 'none';
+
+        whishInfoSection.innerHTML = `
+            <h5>{{ __('landing.whish_transfer') }}</h5>
+            <p>{{ __('landing.transfer_to') }}: +961 70 123 456</p>
+        `;
+        whishInfoSection.classList.add('whish_section');
+        whishInfoSection.style.display = 'none';
+
+        const paymentMethodContainer = paymentMethodSelect.parentNode;
+        paymentMethodContainer.appendChild(bankInfoSection);
+        paymentMethodContainer.appendChild(whishInfoSection);
 
         const updatePaymentMethods = (country) => {
             paymentMethodSelect.innerHTML = '';
@@ -180,20 +238,20 @@
                 codOption.textContent = '{{ __('landing.cash_on_delivery') }}';
                 paymentMethodSelect.appendChild(codOption);
 
-                const cardOption = document.createElement('option');
-                cardOption.value = 'card';
-                cardOption.textContent = '{{ __('landing.card') }}';
-                paymentMethodSelect.appendChild(cardOption);
+                const wireTransferOption = document.createElement('option');
+                wireTransferOption.value = 'wire_transfer';
+                wireTransferOption.textContent = '{{ __('landing.wire_transfer') }}';
+                paymentMethodSelect.appendChild(wireTransferOption);
 
                 const whishOption = document.createElement('option');
                 whishOption.value = 'whish';
                 whishOption.textContent = '{{ __('landing.whish') }}';
                 paymentMethodSelect.appendChild(whishOption);
             } else {
-                const cardOption = document.createElement('option');
-                cardOption.value = 'card';
-                cardOption.textContent = '{{ __('landing.card') }}';
-                paymentMethodSelect.appendChild(cardOption);
+                const wireTransferOption = document.createElement('option');
+                wireTransferOption.value = 'wire_transfer';
+                wireTransferOption.textContent = '{{ __('landing.wire_transfer') }}';
+                paymentMethodSelect.appendChild(wireTransferOption);
 
                 const whishOption = document.createElement('option');
                 whishOption.value = 'whish';
@@ -202,6 +260,21 @@
             }
         };
 
+        paymentMethodSelect.addEventListener('change', function () {
+            const selectedMethod = paymentMethodSelect.value;
+
+            if (selectedMethod === 'wire_transfer') {
+                bankInfoSection.style.display = 'block';
+                whishInfoSection.style.display = 'none';
+            } else if (selectedMethod === 'whish') {
+                bankInfoSection.style.display = 'none';
+                whishInfoSection.style.display = 'block';
+            } else {
+                bankInfoSection.style.display = 'none';
+                whishInfoSection.style.display = 'none';
+            }
+        });
+
         countrySelect.addEventListener('change', function () {
             const selectedCountry = countrySelect.value;
             updatePaymentMethods(selectedCountry);
@@ -209,6 +282,5 @@
 
         updatePaymentMethods(countrySelect.value);
     });
-
 </script>
 @endsection
