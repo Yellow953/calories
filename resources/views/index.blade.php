@@ -123,12 +123,12 @@ $translator->setTarget(app()->getLocale());
         <div class="owl-carousel owl-theme products">
             @foreach ($products as $product)
             <div class="category-item bg-white">
-                <div class="product-img">
+                <div class="product-img" style="height: auto">
                     <a href="{{ route('product', $product->name) }}">
                         <img src="{{ asset($product->image) }}" class="img-fluid category-img">
                     </a>
                 </div>
-                <h5 class="category-title text-center text-primary mt-2">{{ $translate ?
+                <h5 class="text-center text-primary mt-2">{{ $translate ?
                     $translator->translate($product->name) : $product->name }}</h5>
             </div>
             @endforeach
