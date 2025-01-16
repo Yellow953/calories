@@ -98,4 +98,6 @@ return [
     'swift_code' => 'رمز السويفت',
     'whish_transfer' => 'تحويل عبر Whish',
     'transfer_to' => 'التحويل إلى',
+    'account_name' => 'اسم الحساب',
+    'iban' => 'رقم الحساب البنكي الدولي (IBAN)',
 ];

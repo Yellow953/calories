@@ -98,4 +98,6 @@ return [
     'swift_code' => 'Swift Code',
     'whish_transfer' => 'Whish Transfer',
     'transfer_to' => 'Transfer To',
+    'account_name' => 'Account Name',
+    'iban' => 'IBAN'
 ];

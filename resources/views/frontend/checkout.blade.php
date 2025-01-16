@@ -220,16 +220,18 @@
 
         bankInfoSection.innerHTML = `
             <h5>{{ __('landing.bank_info') }}</h5>
-            <p>{{ __('landing.bank_name') }}: Bank ABC</p>
-            <p>{{ __('landing.account_number') }}: 123456789</p>
-            <p>{{ __('landing.swift_code') }}: ABCDEF123</p>
+            <p>{{ __('landing.bank_name') }}: Franca Bank</p>
+            <p>{{ __('landing.account_name') }}: MISS KHANSA FATIMA ZAHRAA</p>
+            <p>{{ __('landing.account_number') }}: 0601USD1519220526801</p>
+            <p>{{ __('landing.iban') }}: LB47 0001 0601 USD1 5192 2052 6801</p>
+            <p>{{ __('landing.swift_code') }}: FSABLBBXA</p>
         `;
         bankInfoSection.classList.add('bank_section');
         bankInfoSection.style.display = 'none';
 
         whishInfoSection.innerHTML = `
             <h5>{{ __('landing.whish_transfer') }}</h5>
-            <p>{{ __('landing.transfer_to') }}: +961 70 123 456</p>
+            <p>{{ __('landing.transfer_to') }}: +961 81 893 865</p>
         `;
         whishInfoSection.classList.add('whish_section');
         whishInfoSection.style.display = 'none';
