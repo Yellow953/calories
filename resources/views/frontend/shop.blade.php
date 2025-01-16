@@ -39,7 +39,7 @@ $translator->setTarget(app()->getLocale());
                 </div>
                 <div class="row mt-4">
                     @foreach($products as $product)
-                    <div class="col-6 col-md-3 mb-3">
+                    <div class="col-12 col-sm-6 col-md-3 mb-3">
                         <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
                             <div class="card item-card overflow-hidden shadow-sm">
                                 <img src="{{ $product->image }}" class="img-fluid product-img">

@@ -55,7 +55,7 @@ class HomeController extends Controller
     public function product(Product $product)
     {
         $products = Product::select('id', 'name', 'image')->where('category_id', $product->category_id)->limit(8)->get();
-        $currency = Currency::where('name', Cookie::get('currency'))->first();
+        $currency = Currency::where('name', Cookie::get('currency', 'usd'))->first();
 
         $data = compact('product', 'products', 'currency');
         return view('frontend.product', $data);
@@ -326,10 +326,10 @@ class HomeController extends Controller
             'zip' => 'nullable|numeric|min:0',
             'payment_method' => 'required|string',
             'notes' => 'nullable|string',
+            'shipping' => 'required|numeric|min:1',
         ]);
 
-        $cart = $request->input('cart', []);
-
+        $cart = json_decode($request->cart, true);
         if (!$cart || empty($cart)) {
             return redirect()->back()->with('error', 'Cart is empty.');
         }
@@ -340,7 +340,7 @@ class HomeController extends Controller
             $subTotal += $item['price'] * $item['quantity'];
             $productsCount += $item['quantity'];
         }
-        $shippingFee = 10;
+        $shippingFee = $request->shipping;
         $total = $subTotal + $shippingFee;
 
         DB::beginTransaction();

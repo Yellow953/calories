@@ -10,12 +10,16 @@
 
             <form class="form" action="{{ route('order') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+
+                <input type="hidden" name="cart" id="cart-data" value="">
+                <input type="hidden" name="shipping" id="shipping-cost" value="">
+
                 <div class="row">
                     <div class="col-md-12">
                         <h2 class="text-secondary text-center mb-4">{{ __('landing.checkout') }}</h2>
                     </div>
                     <!-- Left Column -->
-                    <div class="col-md-7">
+                    <div class="col-md-7 mt-2">
                         <div class="card p-4">
                             <!-- Shipping Information -->
                             <div class="mb-4">
@@ -91,7 +95,7 @@
                     </div>
 
                     <!-- Right Column -->
-                    <div class="col-md-5">
+                    <div class="col-md-5 mt-2">
                         <div class="card p-4 border-primary">
                             <h4 class="text-primary text-center mb-4">{{ __('landing.order_summary') }}</h4>
                             <div class="summary-card" id="cart-items-container">
@@ -161,6 +165,8 @@
         const shippingElement = document.getElementById('shipping-price');
         const totalElement = document.getElementById('total-price');
         const countrySelect = document.getElementById('country');
+        const hiddenCartData = document.getElementById('cart-data');
+        const hiddenShippingCost = document.getElementById('shipping-cost');
 
         let subtotal = 0;
         let totalQuantity = 0;
@@ -173,7 +179,7 @@
             cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
 
             cartItem.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
+            <img src="${item.image}" alt="${item.name}" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
                 <div>
                     <p class="mb-0">${item.name}</p>
                     <small>{{ __('landing.quantity') }}: ${item.quantity}</small>
@@ -195,6 +201,9 @@
             const shippingCost = calculateShipping();
             shippingElement.textContent = `$${shippingCost.toFixed(2)}`;
             totalElement.textContent = `$${(subtotal + shippingCost).toFixed(2)}`;
+
+            hiddenCartData.value = JSON.stringify(cartData);
+            hiddenShippingCost.value = shippingCost.toFixed(2);
         };
 
         countrySelect.addEventListener('change', updatePrices);
