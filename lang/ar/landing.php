@@ -100,4 +100,6 @@ return [
     'transfer_to' => 'التحويل إلى',
     'account_name' => 'اسم الحساب',
     'iban' => 'رقم الحساب البنكي الدولي (IBAN)',
+    'sponsor' => ' تم التصميم والتطوير من قبل',
+    'yellowtech' => 'YellowTech',
 ];

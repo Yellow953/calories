@@ -47,6 +47,7 @@
     </div>
 
     @include('layouts._footer')
+    @include('layouts._sponsor')
 
     @include('layouts._modals')
 
