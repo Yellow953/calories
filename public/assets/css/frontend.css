@@ -158,10 +158,6 @@ body {
     .img-footer {
         width: 50% !important;
     }
-    .img-footer-logo {
-        width: 50% !important;
-        height: fit-content !important;
-    }
     .hero {
         height: 50vh !important;
     }
@@ -180,9 +176,6 @@ body {
     .img-footer {
         height: 100% !important;
         object-fit: cover;
-    }
-    .img-footer-logo {
-        width: 100%;
     }
     .hero {
         height: 50vh !important;
@@ -472,9 +465,10 @@ footer {
 }
 
 .img-footer-logo {
-    width: auto;
-    height: fit-content;
+    width: 200px !important;
+    height: 200px !important;
 }
+
 .rounded-white {
     border-radius: 200px !important;
     background-color: var(--light-text) !important;
