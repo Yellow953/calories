@@ -160,7 +160,7 @@ body {
     }
     .img-footer-logo {
         width: 50% !important;
-        height: fit-content;
+        height: fit-content !important;
     }
     .hero {
         height: 50vh !important;
