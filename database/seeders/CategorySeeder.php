@@ -80,6 +80,13 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Cosmetics',
+                'description' => 'Paraben-free, vegan and cruelty-free skincare, haircare and body care.',
+                'image' => 'assets/images/Cosmetics.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
 
