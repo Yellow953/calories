@@ -87,6 +87,13 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Protein',
+                'description' => 'High-protein drinks, cookies, pancakes, gummies and whey with no added sugar.',
+                'image' => 'assets/images/Protein.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
 
