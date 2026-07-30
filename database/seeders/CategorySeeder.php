@@ -94,6 +94,27 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'NABAT',
+                'description' => 'Bio organic fruit, vegetable and superfood powders and natural sweeteners.',
+                'image' => 'assets/images/NABAT.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Sweeteners',
+                'description' => 'Natural low-calorie sweeteners and organic syrups — allulose, xylitol, erythritol, stevia, agave and more.',
+                'image' => 'assets/images/Sweeteners.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Sea Salt',
+                'description' => 'Premium grade natural salts — Himalayan pink and black, Mediterranean and Atlantic sea salt, and Celtic grey.',
+                'image' => 'assets/images/Sea Salt.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
 
