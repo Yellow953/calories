@@ -115,6 +115,27 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Mrs Taste',
+                'description' => 'Zero-calorie, sugar-free and sodium-free syrups, sauces and dressings — ketchup, mayo, barbecue, ranch, chocolate, caramel and more.',
+                'image' => 'assets/images/Mrs Taste.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Organic Flour',
+                'description' => 'Stone-ground organic flours and starches — barley, rice, chickpea, oat, quinoa, almond, spelt, corn, tapioca, whole wheat and more.',
+                'image' => 'assets/images/Organic Flour.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Organic Rice',
+                'description' => 'Whole grain organic rice — short grain brown, super basmati brown, mixed rice, and low-calorie konjac rice.',
+                'image' => 'assets/images/Organic Rice.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
 
