@@ -16,48 +16,45 @@ $translator->setTarget(app()->getLocale());
 @section('content')
 <section class="pb-5">
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-12">
-                        <h5 class="text-primary fw-semibold mb-3">{{__('landing.categories')}}</h5>
-                        <div class="owl-carousel owl-theme categories">
-                            @foreach ($categories as $category)
-                            <div class="category-item bg-white">
-                                <div class="category-image">
-                                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}">
-                                        <img src="{{ asset($category->image) }}" class="img-fluid category-img">
-                                    </a>
-                                </div>
-                                <h5 class="category-title text-center mt-2">{{ $translate ?
-                                    $translator->translate($category->name) : $category->name
-                                    }}</h5>
-                            </div>
-                            @endforeach
+        <div class="mb-5">
+            <h2 class="section-heading">{{ __('landing.shop_by_category') }}</h2>
+            <p class="section-sub">{{ __('landing.find_your_wellness') }}</p>
+            <div class="owl-carousel owl-theme categories">
+                @foreach ($categories as $category)
+                <div class="category-item">
+                    <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}"
+                        class="text-decoration-none">
+                        <div class="category-image">
+                            <img src="{{ asset($category->image) }}" class="img-fluid category-img">
+                        </div>
+                        <h5 class="category-title">{{ $translate ?
+                            $translator->translate($category->name) : $category->name }}</h5>
+                        <span class="category-count">{{ $category->products_count }} {{ __('landing.products') }}</span>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="row g-4">
+            @foreach($products as $product)
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
+                    <div class="card item-card overflow-hidden h-100">
+                        <img src="{{ asset($product->image) }}" class="img-fluid product-img">
+                        <div class="card-body text-center">
+                            <h5 class="card-title mb-3">{{ $translate ?
+                                $translator->translate($product->name) : $product->name }}</h5>
+                            <span class="btn btn-primary mt-auto">{{ __('landing.view_product') }}</span>
                         </div>
                     </div>
-                </div>
-                <div class="row mt-4">
-                    @foreach($products as $product)
-                    <div class="col-12 col-sm-6 col-md-3 mb-3">
-                        <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
-                            <div class="card item-card overflow-hidden shadow-sm">
-                                <img src="{{ $product->image }}" class="img-fluid product-img">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center">{{ $translate ?
-                                        $translator->translate($product->name) : $product->name }}</h5>
-                                    <a href="{{ route('product', $product->name) }}"
-                                        class="btn btn-primary mt-3">{{__('landing.view_product')}}</a>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
-                    <div class="d-flex justify-content-center mt-4">
-                        {{ $products->links() }}
-                    </div>
-                </div>
+                </a>
             </div>
+            @endforeach
+        </div>
+
+        <div class="d-flex justify-content-center mt-5">
+            {{ $products->links() }}
         </div>
     </div>
 </section>

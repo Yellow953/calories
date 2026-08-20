@@ -20,7 +20,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::select('id', 'name', 'image')->get();
+        $categories = Category::select('id', 'name', 'image')->withCount('products')->get();
         $products = Product::select('id', 'name', 'image')->limit(10)->get();
 
         $data = compact('categories', 'products');
@@ -39,7 +39,7 @@ class HomeController extends Controller
 
     public function shop(Request $request)
     {
-        $categories = Category::select('id', 'name', 'image')->get();
+        $categories = Category::select('id', 'name', 'image')->withCount('products')->get();
 
         if ($request->input('category')) {
             $category = Category::where('name', $request->input('category'))->firstOrFail();

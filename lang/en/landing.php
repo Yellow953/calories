@@ -102,4 +102,7 @@ return [
     'iban' => 'IBAN',
     'sponsor' => 'Designed & Developed By ',
     'yellowtech' => 'YellowTech',
+    'products' => 'Products',
+    'shop_by_category' => 'Shop by Category',
+    'find_your_wellness' => 'Naturally sourced. Thoughtfully made.',
 ];

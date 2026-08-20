@@ -102,4 +102,7 @@ return [
     'iban' => 'رقم الحساب البنكي الدولي (IBAN)',
     'sponsor' => ' تم التصميم والتطوير من قبل',
     'yellowtech' => 'YellowTech',
+    'products' => 'منتجات',
+    'shop_by_category' => 'تسوق حسب الفئة',
+    'find_your_wellness' => 'مصادر طبيعية. مصنوعة بعناية.',
 ];

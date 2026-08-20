@@ -73,11 +73,11 @@ $translator->setTarget(app()->getLocale());
                         <div class="mt-3 w-100">
                             <input type="number" min="0" step="1" value="1" name="quantity" id="quantity"
                                 class="form-control my-2" required>
-                            <a href="#" id="addToCart" class="btn btn-cta my-2 shake">
-                                {{__('landing.addtocart')}} <i class="fa-solid fa-cart-shopping"></i>
+                            <a href="#" id="addToCart" class="btn btn-primary w-100 my-2 shake">
+                                {{__('landing.addtocart')}} <i class="fa-solid fa-cart-shopping ms-1"></i>
                             </a>
                             <a href="#" id="buyNow" class="btn btn-cta my-2 shake">
-                                {{__('landing.buynow')}} <i class="fa-solid fa-arrow-right"></i>
+                                {{__('landing.buynow')}} <i class="fa-solid fa-arrow-right ms-1"></i>
                             </a>
                         </div>
                     </div>
@@ -105,37 +105,22 @@ $translator->setTarget(app()->getLocale());
             </div>
         </div>
 
-        <div class="row mt-5">
-            <h2 class="my-4 text-center text-primary">{{__('landing.similar_products')}}</h2>
+        <div class="row mt-5 pt-4">
+            <h2 class="section-heading mb-4">{{__('landing.similar_products')}}</h2>
 
-            <!-- Start Carousel Wrapper -->
-            <div id="multi-item-example" class="col-12 carousel slide carousel-multi-item pointer-event"
-                data-bs-ride="carousel">
-                <!-- Start Slides -->
-                <div class="carousel-inner product-links-wap" role="listbox">
-                    @foreach ($products->chunk(4) as $key => $chunk)
-                    <!-- Group products into chunks of 4 -->
-                    <div class="carousel-item {{ $key === 0 ? 'active' : '' }}">
-                        <!-- Set the first slide as active -->
-                        <div class="row">
-                            @foreach ($chunk as $pr)
-                            <div class="col-3">
-                                <a href="{{ route('product', $pr->name) }}" class="text-decoration-none">
-                                    <img class="card-img border img-fluid" src="{{ asset($pr->image) }}"
-                                        alt="{{ $pr->name }}">
-                                    <h5 class="category-title text-center text-primary mt-2">{{ $translate ?
-                                        $translator->translate($pr->name) : $pr->name
-                                        }}</h5>
-                                </a>
-                            </div>
-                            @endforeach
+            @foreach ($products as $pr)
+            <div class="col-6 col-md-3 mb-3">
+                <a href="{{ route('product', $pr->name) }}" class="text-decoration-none">
+                    <div class="category-item h-100">
+                        <div class="category-image">
+                            <img src="{{ asset($pr->image) }}" class="img-fluid category-img" alt="{{ $pr->name }}">
                         </div>
+                        <h5 class="category-title">{{ $translate ?
+                            $translator->translate($pr->name) : $pr->name }}</h5>
                     </div>
-                    @endforeach
-                </div>
-                <!-- End Slides -->
+                </a>
             </div>
-            <!-- End Carousel Wrapper -->
+            @endforeach
 
             {{-- <div class="row mt-5">
                 <h2 class="my-4 text-center text-primary">{{__('landing.faq')}}</h2>
