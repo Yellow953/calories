@@ -2,16 +2,7 @@
 
 @section('title', __('landing.shop'))
 
-@php
-use Stichoza\GoogleTranslate\GoogleTranslate;
-
-$translate = app()->getLocale() != 'en';
-
-if($translate){
-$translator = new GoogleTranslate();
-$translator->setTarget(app()->getLocale());
-}
-@endphp
+@section('meta_description', 'Browse the full range of healthy foods at Calories by Fatima — organic products, dried & freeze-dried fruits, sugar-free and protein snacks, sweeteners, honey and supplements. Delivery across Lebanon.')
 
 @section('content')
 <section class="pb-5">
@@ -25,10 +16,10 @@ $translator->setTarget(app()->getLocale());
                     <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}"
                         class="text-decoration-none">
                         <div class="category-image">
-                            <img src="{{ asset($category->image) }}" class="img-fluid category-img">
+                            <img src="{{ asset($category->image) }}" class="img-fluid category-img" decoding="async"
+                                alt="{{ $category->name }}">
                         </div>
-                        <h5 class="category-title">{{ $translate ?
-                            $translator->translate($category->name) : $category->name }}</h5>
+                        <h5 class="category-title">{{ gtrans($category->name) }}</h5>
                         <span class="category-count">{{ $category->products_count }} {{ __('landing.products') }}</span>
                     </a>
                 </div>
@@ -41,10 +32,10 @@ $translator->setTarget(app()->getLocale());
             <div class="col-6 col-md-4 col-lg-3">
                 <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
                     <div class="card item-card overflow-hidden h-100">
-                        <img src="{{ asset($product->image) }}" class="img-fluid product-img">
+                        <img src="{{ asset($product->image) }}" class="img-fluid product-img" loading="lazy"
+                            decoding="async" alt="{{ $product->name }}">
                         <div class="card-body text-center">
-                            <h5 class="card-title mb-3">{{ $translate ?
-                                $translator->translate($product->name) : $product->name }}</h5>
+                            <h5 class="card-title mb-3">{{ gtrans($product->name) }}</h5>
                             <span class="btn btn-primary mt-auto">{{ __('landing.view_product') }}</span>
                         </div>
                     </div>

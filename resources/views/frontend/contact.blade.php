@@ -2,6 +2,8 @@
 
 @section('title', __('landing.contact'))
 
+@section('meta_description', 'Get in touch with Calories by Fatima in Saida, Lebanon. Call +961 70 833 158, email us, or visit us on Natasha Saeed Street for healthy food and supplements.')
+
 @section('content')
 <section class="pb-5 mt-5">
     <div class="container mt-3">

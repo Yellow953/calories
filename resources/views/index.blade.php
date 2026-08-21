@@ -2,26 +2,19 @@
 
 @section('title', __('landing.home'))
 
-@php
-use Stichoza\GoogleTranslate\GoogleTranslate;
-
-$translate = app()->getLocale() != 'en';
-
-if($translate){
-$translator = new GoogleTranslate();
-$translator->setTarget(app()->getLocale());
-}
-@endphp
+@section('meta_description', 'Calories by Fatima — your healthy food store in Saida, Lebanon. Shop organic products, dried & freeze-dried fruits, sugar-free and protein snacks, sweeteners, honey and supplements with delivery across Lebanon.')
 
 @section('content')
 <div class="slider">
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ asset('assets/images/hero.png') }}" class="d-block hero-img" alt="Hero Image">
+                <img src="{{ asset('assets/images/hero.png') }}" class="d-block hero-img" fetchpriority="high"
+                    decoding="async" alt="Calories by Fatima — healthy food store">
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('assets/images/hero-3.png') }}" class="d-block hero-img" alt="Healthy Living">
+                <img src="{{ asset('assets/images/hero-3.png') }}" class="d-block hero-img" loading="lazy"
+                    decoding="async" alt="Healthy living starts here">
             </div>
         </div>
     </div>
@@ -38,10 +31,10 @@ $translator->setTarget(app()->getLocale());
                 <a href="{{ route('shop') }}?category={{ urlencode($category->name) }}"
                     class="text-decoration-none">
                     <div class="category-image">
-                        <img src="{{ asset($category->image) }}" class="img-fluid category-img">
+                        <img src="{{ asset($category->image) }}" class="img-fluid category-img" decoding="async"
+                            alt="{{ $category->name }}">
                     </div>
-                    <h5 class="category-title">{{ $translate ? $translator->translate($category->name) :
-                        $category->name }}</h5>
+                    <h5 class="category-title">{{ gtrans($category->name) }}</h5>
                     <span class="category-count">{{ $category->products_count }} {{ __('landing.products') }}</span>
                 </a>
             </div>
@@ -112,10 +105,10 @@ $translator->setTarget(app()->getLocale());
             <div class="category-item">
                 <a href="{{ route('product', $product->name) }}" class="text-decoration-none">
                     <div class="category-image">
-                        <img src="{{ asset($product->image) }}" class="img-fluid category-img">
+                        <img src="{{ asset($product->image) }}" class="img-fluid category-img" decoding="async"
+                            alt="{{ $product->name }}">
                     </div>
-                    <h5 class="category-title">{{ $translate ?
-                        $translator->translate($product->name) : $product->name }}</h5>
+                    <h5 class="category-title">{{ gtrans($product->name) }}</h5>
                     <span class="category-count">{{ __('landing.view_product') }}</span>
                 </a>
             </div>

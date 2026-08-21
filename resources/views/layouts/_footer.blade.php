@@ -1,14 +1,14 @@
 <footer>
     <div class="d-block d-md-flex">
         <div class="col-md-3 m-hidden">
-            <img src="{{ asset('assets/images/footer.png') }}" alt="" class="img-fluid img-footer">
+            <img src="{{ asset('assets/images/footer.png') }}" alt="Fresh healthy food" loading="lazy" decoding="async" class="img-fluid img-footer">
         </div>
         <div class="col-md-3 tab-display">
-            <img src="{{ asset('assets/images/footer.png') }}" alt="" class="img-fluid img-footer">
+            <img src="{{ asset('assets/images/footer.png') }}" alt="Fresh healthy food" loading="lazy" decoding="async" class="img-fluid img-footer">
         </div>
         <div class="col-12 col-md-2 align-content-center text-center">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="" width="200" height="200"
-                class="img-fluid img-footer-logo rounded-white ms-md-4 mt-5 mt-md-0">
+            <img src="{{ asset('assets/images/logo.png') }}" alt="Calories by Fatima logo" width="200" height="200"
+                loading="lazy" decoding="async" class="img-fluid img-footer-logo rounded-white ms-md-4 mt-5 mt-md-0">
         </div>
         <div class="col-12 col-md-7 text-shadow">
             <div class="ms-md-5 mt-5 pb-4">

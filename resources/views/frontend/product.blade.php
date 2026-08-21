@@ -2,16 +2,30 @@
 
 @section('title', ucwords($product->name))
 
-@php
-use Stichoza\GoogleTranslate\GoogleTranslate;
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($product->description ?: $product->name . ' — available at Calories by Fatima, healthy food store in Saida, Lebanon.'), 155))
 
-$translate = app()->getLocale() != 'en';
+@section('meta_image', asset($product->image))
 
-if($translate){
-$translator = new GoogleTranslate();
-$translator->setTarget(app()->getLocale());
-}
-@endphp
+@push('structured_data')
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Product',
+    'name' => $product->name,
+    'image' => asset($product->image),
+    'description' => \Illuminate\Support\Str::limit(strip_tags($product->description ?: $product->name), 300),
+    'category' => optional($product->category)->name,
+    'brand' => ['@type' => 'Brand', 'name' => 'Calories by Fatima'],
+    'offers' => [
+        '@type' => 'Offer',
+        'price' => number_format($product->price * $currency->rate, 2, '.', ''),
+        'priceCurrency' => strtoupper($currency->name ?? 'USD'),
+        'availability' => 'https://schema.org/InStock',
+        'url' => url()->current(),
+    ],
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+</script>
+@endpush
 
 @section('content')
 <section class="pb-5">
@@ -20,8 +34,8 @@ $translator->setTarget(app()->getLocale());
             <div class="col-md-6 mt-5">
                 <div class="card mb-3 position-relative overflow-hidden">
                     <!-- Main Image -->
-                    <img class="card-img img-fluid" src="{{ asset($product->image) }}" alt="Product image"
-                        id="product-detail">
+                    <img class="card-img img-fluid" src="{{ asset($product->image) }}" fetchpriority="high"
+                        decoding="async" alt="{{ $product->name }}" id="product-detail">
                 </div>
 
                 <!-- Secondary Images Carousel -->
@@ -36,7 +50,8 @@ $translator->setTarget(app()->getLocale());
                                     <div class="col-4 p-2">
                                         <a href="#" class="secondary-image" data-image="{{ asset($image->path) }}">
                                             <img class="card-img secondary-img border img-fluid"
-                                                src="{{ asset($image->path) }}">
+                                                src="{{ asset($image->path) }}" loading="lazy" decoding="async"
+                                                alt="{{ $product->name }}">
                                         </a>
                                     </div>
                                     @endforeach
@@ -52,12 +67,10 @@ $translator->setTarget(app()->getLocale());
             <div class="col-md-6 mt-5">
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="h2 text-primary">{{ $translate ? $translator->translate($product->name) :
-                            $product->name }}</h1>
+                        <h1 class="h2 text-primary">{{ gtrans($product->name) }}</h1>
                         <div class="my-3">
                             <div class="d-flex justify-content-between my-2">
-                                <span class="fw-bold">{{__('landing.category')}}:</span> {{ $translate ?
-                                $translator->translate($product->category->name) : $product->category->name }}
+                                <span class="fw-bold">{{__('landing.category')}}:</span> {{ gtrans($product->category->name) }}
                             </div>
                         </div>
                         <div class="d-flex justify-content-between align-content-center">
@@ -95,8 +108,7 @@ $translator->setTarget(app()->getLocale());
                             </h2>
                             <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
                                 <div class="accordion-body">
-                                    {{ $translate ? $translator->translate($product->description) :
-                                    $product->description }}
+                                    {{ gtrans($product->description) }}
                                 </div>
                             </div>
                         </div>
@@ -113,10 +125,10 @@ $translator->setTarget(app()->getLocale());
                 <a href="{{ route('product', $pr->name) }}" class="text-decoration-none">
                     <div class="category-item h-100">
                         <div class="category-image">
-                            <img src="{{ asset($pr->image) }}" class="img-fluid category-img" alt="{{ $pr->name }}">
+                            <img src="{{ asset($pr->image) }}" class="img-fluid category-img" loading="lazy"
+                                decoding="async" alt="{{ $pr->name }}">
                         </div>
-                        <h5 class="category-title">{{ $translate ?
-                            $translator->translate($pr->name) : $pr->name }}</h5>
+                        <h5 class="category-title">{{ gtrans($pr->name) }}</h5>
                     </div>
                 </a>
             </div>

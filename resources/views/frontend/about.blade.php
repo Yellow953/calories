@@ -2,6 +2,8 @@
 
 @section('title', __('landing.about'))
 
+@section('meta_description', 'Learn about Calories by Fatima — a Saida-based healthy food store on a mission to make natural, wholesome nutrition easy and delicious for families across Lebanon.')
+
 @section('content')
 <div class="py-5">
     <div class="overlay mt-md-5">
