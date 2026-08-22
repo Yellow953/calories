@@ -136,6 +136,20 @@ class CategorySeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Healthy Spread',
+                'description' => 'Sugar free and natural nut, chocolate and pistachio spreads — KEE, So Vegan So Fine, Equia and Today.',
+                'image' => 'assets/images/Healthy Spread.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Healthy Butters',
+                'description' => 'NABAT natural nut butters — peanut, pistachio, cashew, almond and hazelnut. Vegan, gluten free, no palm oil.',
+                'image' => 'assets/images/Healthy Butters.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
 
