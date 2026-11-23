@@ -18,6 +18,17 @@ class Product extends Model
         return $this->price - $this->cost;
     }
 
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    // A product that has been ordered must be kept for order history
+    public function can_delete(): bool
+    {
+        return ! $this->order_items()->exists();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

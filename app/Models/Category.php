@@ -17,6 +17,12 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
+    // A category that still has products cannot be deleted
+    public function can_delete(): bool
+    {
+        return ! $this->products()->exists();
+    }
+
     // Filter
     public function scopeFilter($q)
     {
